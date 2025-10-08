@@ -1,3 +1,12 @@
+export const ASSETS_OPERATIONS_TYPES = {
+  UPDATE: "update",
+  ADDED: "added",
+  RESTORE: "update",
+  ARCHIVE: "update",
+  DELETE: "delete",
+  REMOVE_FROM_SITE: "remove",
+};
+
 export const ASSET_FIELD_VALUE_TYPE = {
   STRING: "FIELD_VALUE_TYPE_STRING",
   MONEY: "FIELD_VALUE_TYPE_MONEY",
