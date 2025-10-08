@@ -19,6 +19,7 @@ export const CustomText = (props: CustomTextPropsI) => {
     marginBottom,
     gutterBottom
     children,
+    noWrap,
   } = props;
 
   return (
@@ -32,7 +33,7 @@ export const CustomText = (props: CustomTextPropsI) => {
         textTransform: isCapital ? "capitalize" : textTransform,
         marginBottom: gutterBottom ? pxToRem(8) : marginBottom
       }}
-      // noWrap={noWrap}
+      noWrap={noWrap}
       component={componentMap?.[variant] ?? component}
     >
       {children}
