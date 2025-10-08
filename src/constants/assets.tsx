@@ -1,7 +1,6 @@
 export const ASSETS_STATUS = {
   ACTIVE: "active",
   DEPRECATE: "deprecate",
-  IN: "in",
 };
 
 export const ASSET_FIELD_VALUE_TYPE = {
@@ -21,3 +20,5 @@ export const ASSET_FIELD_MAPPED: any = {
   [ASSET_FIELD_VALUE_TYPE.MONEY]: ASSET_FIELD_LABEL.CURR,
   [ASSET_FIELD_VALUE_TYPE.TIMESTAMP]: ASSET_FIELD_LABEL.DATE,
 };
+
+export const N = {};
