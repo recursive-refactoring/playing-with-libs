@@ -1,6 +1,7 @@
 export const ASSETS_STATUS = {
   ACTIVE: "active",
   DEPRECATE: "deprecate",
+  IN: "in",
 };
 
 export const ASSET_FIELD_VALUE_TYPE = {
