@@ -1,10 +1,6 @@
-export const ASSETS_OPERATIONS_TYPES = {
-  UPDATE: "update",
-  ADDED: "added",
-  RESTORE: "update",
-  ARCHIVE: "update",
-  DELETE: "delete",
-  REMOVE_FROM_SITE: "remove",
+export const ASSETS_STATUS = {
+  ACTIVE: "active",
+  DEPRECATE: "deprecate",
 };
 
 export const ASSET_FIELD_VALUE_TYPE = {
