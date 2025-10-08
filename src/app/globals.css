@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hide everything by default when printing */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the printable section */
+  .printable,
+  .printable * {
+    visibility: visible;
+  }
+
+  /* Position it at the top left (so layout looks correct) */
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
