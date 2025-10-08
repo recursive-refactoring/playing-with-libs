@@ -1,3 +1,8 @@
+export const ASSETS_STATUS = {
+  ACTIVE: "active",
+  DEPRECATE: "deprecate",
+};
+
 export const ASSET_FIELD_VALUE_TYPE = {
   STRING: "FIELD_VALUE_TYPE_STRING",
   MONEY: "FIELD_VALUE_TYPE_MONEY",
