@@ -8,7 +8,7 @@ export interface MessagesOptionsI {
   max?: string;
 }
 
-export type ValidatorOptions = {
+export type ValidatorOptionsI = {
   required?: boolean;
   email?: boolean;
   min?: number | Date;
@@ -19,47 +19,82 @@ export type ValidatorOptions = {
   integer?: boolean;
   ref?: string;
   messages?: MessagesOptionsI;
+  field?: any;
+  strip?: any;
   dependsOn?: {
     field: string | string[];
     is: any;
-    then?: ValidatorOptions;
-    otherwise?: ValidatorOptions;
+    then?: ValidatorOptionsI;
+    otherwise?: ValidatorOptionsI;
   };
 };
 
 export const stringValidator = (
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.StringSchema<string | null | undefined> => {
   let schema: any = Yup.string().trim();
 
   if (options.required)
     schema = schema.required(
-      `${options?.messages?.required ?? "This field"} is required`,
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
     );
   if (options.ref)
     schema = schema.oneOf([Yup.ref(options.ref), ""], "both will be same");
+  if (options.strip) schema = schema.strip();
   if (options.email) schema = schema.email("Invalid email format");
   if (typeof options.min === "number")
-    schema = schema.min(options.min, `Minimum ${options.min} characters`);
+    schema = schema.min(
+      options.min,
+      options?.messages?.min
+        ? options?.messages?.min
+        : `Minimum ${options.min} characters`,
+    );
   if (typeof options.max === "number")
-    schema = schema.max(options.max, `Maximum ${options.max} characters`);
+    schema = schema.max(
+      options.max,
+      options?.messages?.max
+        ? options?.messages?.max
+        : `Maximum ${options.max} characters`,
+    );
   if (options.matches)
-    schema = schema.matches(options.matches, "Invalid format");
+    schema = schema.matches(
+      options.matches,
+      options?.messages?.matches
+        ? options?.messages?.matches
+        : "Invalid format",
+    );
 
   return schema;
 };
 
 export const numberValidator = (
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.NumberSchema<number | null | undefined> => {
   let schema: any = Yup.number();
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
   if (typeof options.min === "number")
-    schema = schema.min(options.min, `Minimum value is ${options.min}`);
+    schema = schema.min(
+      options.min,
+      options?.messages?.min
+        ? options?.messages?.min
+        : `Minimum value is ${options.min}`,
+    );
   if (typeof options.max === "number")
-    schema = schema.max(options.max, `Maximum value is ${options.max}`);
+    schema = schema.max(
+      options.max,
+      options?.messages?.max
+        ? options?.messages?.max
+        : `Maximum value is ${options.max}`,
+    );
   if (options.positive) schema = schema.positive("Must be positive");
   if (options.integer) schema = schema.integer("Must be an integer");
 
@@ -67,81 +102,133 @@ export const numberValidator = (
 };
 
 export const booleanValidator = (
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.BooleanSchema<boolean | null | undefined> => {
   let schema: any = Yup.boolean();
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
 
   return schema;
 };
 
 export const dateValidator = (
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.DateSchema<Date | null | undefined> => {
   let schema: any = Yup.date();
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
   if (options.min instanceof Date)
     schema = schema.min(
       options.min,
-      `Date must be after ${options.min.toDateString()}`,
+      options?.messages?.min
+        ? options?.messages?.min
+        : `Date must be after ${options.min.toDateString()}`,
     );
   if (options.max instanceof Date)
     schema = schema.max(
       options.max,
-      `Date must be before ${options.max.toDateString()}`,
+      options?.messages?.max
+        ? options?.messages?.max
+        : `Date must be before ${options.max.toDateString()}`,
     );
-
+  if (typeof options.min === "string")
+    schema = schema.min(
+      Yup.ref(options.min),
+      options?.messages?.min
+        ? options?.messages?.min
+        : `Date must be after ${options.min}`,
+    );
+  if (typeof options.max === "string")
+    schema = schema.max(
+      Yup.ref(options.max),
+      options?.messages?.max
+        ? options?.messages?.max
+        : `Date must be before ${options.max}`,
+    );
   return schema;
 };
 
 export const arrayValidator = (
   itemValidator: Yup.Schema<any>,
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.ArraySchema<any, AnyObject, any, ""> => {
   let schema: Yup.ArraySchema<any, AnyObject, any, ""> =
     Yup.array().of(itemValidator);
 
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
   if (typeof options.min === "number")
-    schema = schema.min(options.min, `Minimum ${options.min} items required`);
+    schema = schema.min(
+      options.min,
+      options?.messages?.min
+        ? options?.messages?.min
+        : `Minimum ${options.min} items required`,
+    );
   if (typeof options.max === "number")
-    schema = schema.max(options.max, `Maximum ${options.max} items allowed`);
+    schema = schema.max(
+      options.max,
+      options?.messages?.max
+        ? options?.messages?.max
+        : `Maximum ${options.max} items allowed`,
+    );
 
   return schema;
 };
 
 export const mixedValidator = (
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.MixedSchema<any | null | undefined> => {
   let schema: any = Yup.mixed();
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
 
   return schema;
 };
 
 export const objectValidator = (
   shape: Record<string, Yup.Schema<any>>,
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
 ): Yup.ObjectSchema<any | null | undefined> => {
   let schema: any = Yup.object().shape(shape);
   if (options.nullable) schema = schema.nullable();
 
-  if (options.required) schema = schema.required("This field is required");
+  if (options.required)
+    schema = schema.required(
+      options?.messages?.required
+        ? options?.messages?.required
+        : `${options?.field?.label ?? "This field"} is required`,
+    );
 
   return schema;
 };
 
 const validatorsMap: Record<
   string,
-  (options: ValidatorOptions) => Yup.Schema<any>
+  (options: ValidatorOptionsI) => Yup.Schema<any>
 > = {
   string: stringValidator,
   number: numberValidator,
@@ -154,7 +241,7 @@ const validatorsMap: Record<
 
 export const createValidator = (
   type: string,
-  options: ValidatorOptions = {},
+  options: ValidatorOptionsI = {},
   dependenciesShape?: Record<string, Yup.Schema<any>>,
 ): Yup.Schema<any> => {
   const baseValidator = validatorsMap[type];
@@ -164,6 +251,7 @@ export const createValidator = (
     type === "object" && dependenciesShape
       ? objectValidator(dependenciesShape, options)
       : baseValidator(options);
+
   if (options.dependsOn) {
     const { field, is, then, otherwise } = options.dependsOn;
     schema = schema.when(field, {
@@ -181,7 +269,7 @@ export const createSchema = (
     string,
     {
       type: string;
-      options?: ValidatorOptions;
+      options?: ValidatorOptionsI;
       shape?: Record<string, any>;
     }
   >,
@@ -260,4 +348,4 @@ const schemaConfig = {
   },
 };
 
-const sampleSchema = createSchema(schemaConfig);
+export const notUsedSampleSchema = createSchema(schemaConfig);
