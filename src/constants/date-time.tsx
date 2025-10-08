@@ -13,7 +13,15 @@ export const DATE_TIME_FORMAT = {
   ISO: "YYYY-MM-DDTHH:mm:ss.SSS[Z]",
 };
 
-export const TIME_INTERVALS = {
+export const TIME_INTERVALS_GENERAL = {
+  JUST_NOW: 0,
+  MINUTES_IN_HOUR: 60,
+  MINUTES_IN_DAY: 24 * 60,
+  MINUTES_IN_MONTH: 30 * 24 * 60,
+  MINUTES_IN_YEAR: 365 * 24 * 60,
+};
+
+export const TIME_INTERVALS_MINUTES = {
   JUST_NOW: 0,
   MINUTES_IN_HOUR: 60,
   MINUTES_IN_DAY: 24 * 60,
