@@ -30,6 +30,18 @@ const setup = async (pageLink = PAGE_URL_2, options = { headless: false }) => {
   return page;
 };
 
+const interceptedRequest = async (page) => {
+  await page.setRequestInterception(true);
+  page.on("request", (interceptedRequest) => {
+    if (interceptedRequest.url().endsWith(".png")) {
+      interceptedRequest.abort();
+    } else {
+      interceptedRequest.headers({ jk: "123" });
+      interceptedRequest.continue();
+    }
+  });
+};
+
 const waitFor = async (page, selector) => {
   try {
     await page.waitForSelector(selector);
@@ -51,7 +63,6 @@ const submitSimpleForm = async (
     }
 
     await page.click(button.selector);
-
     await page.waitForNavigation();
   } catch (error) {
     throw error;
