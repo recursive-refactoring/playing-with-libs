@@ -1,4 +1,4 @@
-import { AvatarVariantsType } from "@/interfaces/constants/ui";
+import { AvatarVariantsType } from "@/interfaces/ui";
 import { ReactNode } from "react";
 
 export interface AvatarSizeI {

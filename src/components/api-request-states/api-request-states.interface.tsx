@@ -1,4 +1,4 @@
-import { SkeletonTypesI } from "@/interfaces/constants/ui";
+import { SkeletonTypesI } from "@/interfaces/ui";
 import { ReactNode } from "react";
 
 export interface ApiErrorStatePropsI {

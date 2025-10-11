@@ -1,45 +1,59 @@
 import puppeteer from "puppeteer";
+import path from "path";
+import { CHECK_URL_LOGIN, PAGE_URL } from "./constant.js";
+import { defaultBrowserOptions, registerFieldsKeys } from "./data.js";
 
-import { PAGE_URL, PAGE_URL_2 } from "./constant.js";
-
-const loginFieldsKeys = {
-  "input[name='email']": "login@yopmail.com",
-  "input[name='password']": "123456789",
+const retryAttempts = (maxRetries = 3, key) => {
+  const retryMap = {};
+  const getCount = retryMap?.[key] || 0;
+  if (getCount > maxRetries) {
+    console.error(
+      `❌ Giving up on ${request.url()} after ${maxRetries} retries.`,
+    );
+    return;
+  }
+  if (getCount) {
+    retryMap[key] = getCount + 1;
+  }
 };
 
-const registerFieldsKeys = {
-  "input[name='firstName']": "John",
-  "input[name='lastName']": "Doe",
-  "input[name='email']": "login@yopmail.com",
-  "input[name='contactNumber']": "+441234566123",
-  "input[name='description']": "descr",
-  "input[name='crn']": "122344",
-  "input[name='title']": "2313",
-  "input[name='companyLogo']": "/path/to/your/document.pdf",
-};
-
-const setup = async (pageLink = PAGE_URL_2, options = { headless: false }) => {
-  const browser = await puppeteer.launch(options);
-  const page = await browser.newPage();
-  page.setDefaultNavigationTimeout(0);
+const openBrowser = async (options = defaultBrowserOptions) => {
   try {
-    await page.goto(pageLink);
+    return await puppeteer.launch(options);
   } catch (error) {
     throw error;
   }
-  return page;
 };
 
-const interceptedRequest = async (page) => {
-  await page.setRequestInterception(true);
-  page.on("request", (interceptedRequest) => {
-    if (interceptedRequest.url().endsWith(".png")) {
-      interceptedRequest.abort();
-    } else {
-      interceptedRequest.headers({ jk: "123" });
-      interceptedRequest.continue();
-    }
-  });
+const closeBrowser = async (
+  browser,
+  options = { headless: false, devtoold: true },
+) => {
+  try {
+    await browser.close();
+  } catch (error) {
+    throw error;
+  }
+};
+
+const openNewPage = async (browser) => {
+  try {
+    return await browser.newPage();
+  } catch (error) {
+    throw error;
+  }
+};
+
+const openPageLink = async (
+  page,
+  pageLink = PAGE_URL,
+  options = { timeout: 0 },
+) => {
+  try {
+    await page.goto(pageLink, options);
+  } catch (error) {
+    throw error;
+  }
 };
 
 const waitFor = async (page, selector) => {
@@ -50,20 +64,62 @@ const waitFor = async (page, selector) => {
   }
 };
 
-const submitSimpleForm = async (
+const checkForResponse = async (page, options = { url: CHECK_URL_LOGIN }) => {
+  // console.log("checkForResponse");
+  let jsonData = null;
+  try {
+    const response = await page.waitForResponse(
+      (response) =>
+        response.url().includes(options?.url) &&
+        response.request().method() !== "OPTIONS",
+      {
+        timeout: 0,
+      },
+    );
+    try {
+      jsonData = await response.json();
+    } catch (error) {
+      jsonData = null;
+    }
+    const isResponseOk = response.ok();
+
+    return {
+      response,
+      isResponseOk,
+      jsonData,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+const fillSimpleForm = async (
   page,
-  fields = loginFieldsKeys,
-  button = {
-    selector: "button[type='submit']",
+  fields = registerFieldsKeys(),
+  specialFields = {
+    input: "input[name='companyLogo']",
   },
 ) => {
   try {
     for (const key in fields) {
+      if (key.includes(specialFields?.input)) {
+        const input = await page.$(key);
+        const filePath = path.resolve(fields?.[key]);
+        input.uploadFile(filePath);
+        continue;
+      }
+      await waitFor(page, key);
       await page.type(key, fields?.[key]);
     }
+  } catch (error) {
+    throw error;
+  }
+};
 
-    await page.click(button.selector);
-    await page.waitForNavigation();
+const buttonClick = async (page, selector = "button[type='submit']") => {
+  try {
+    await waitFor(page, selector);
+    await page.click(selector);
   } catch (error) {
     throw error;
   }
@@ -71,9 +127,14 @@ const submitSimpleForm = async (
 
 const main = async () => {
   try {
-    const page = await setup();
+    const browser = await openBrowser();
+    const page = await openNewPage(browser);
+    page.setDefaultNavigationTimeout(0);
+    await openPageLink(page);
     await waitFor(page, "form");
-    await submitSimpleForm(page);
+    await fillSimpleForm(page);
+    // await buttonClick(page);
+    const response = await checkForResponse(page);
   } catch (error) {
     console.log(error);
   }
