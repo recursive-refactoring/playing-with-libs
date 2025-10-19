@@ -27,7 +27,7 @@ export const CommonTextField = (props: any) => {
     required = false,
     ...other
   } = props;
-  
+
   return (
     <>
       {label && (

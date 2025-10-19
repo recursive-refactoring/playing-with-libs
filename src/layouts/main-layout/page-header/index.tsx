@@ -7,7 +7,7 @@ import { useMemo } from "react";
 
 export const PageHeader = () => {
   const pathname = usePathname();
-  
+
   const pageTitle = useMemo(() => {
     const splitPathname = pathname?.split("/")?.pop() as string;
     if ([ROLES?.ADMIN, ROLES?.USER]?.includes(splitPathname))
