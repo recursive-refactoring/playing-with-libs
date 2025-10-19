@@ -1,4 +1,4 @@
-import { SnackbarVariantI } from "@/interfaces/constants/snackbar";
+import { SnackbarVariantI } from "@/interfaces/snackbar";
 
 export const SNACKBAR_VARIANTS: SnackbarVariantI = {
   SUCCESS: "success",

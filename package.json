@@ -2,6 +2,7 @@
   "name": "nextjs-architecture",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,6 +22,7 @@
     "dayjs": "^1.11.13",
     "next": "15.1.7",
     "next-qrcode": "^2.5.1",
+    "puppeteer": "^24.23.0",
     "react": "^19.0.0",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^19.0.0",

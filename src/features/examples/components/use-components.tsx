@@ -17,7 +17,7 @@ import {
   singleData,
 } from "./components.data";
 import { useEffect, useState } from "react";
-import { errorSnackbar } from "@/libs/snackbar.lib";
+import { errorSnackbar } from "@/libs/snackbar";
 import {
   generateDynamicFieldsPayload,
   generateDynamicForm,

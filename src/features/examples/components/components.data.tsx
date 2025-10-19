@@ -3,7 +3,6 @@ import TextAreaFormFields from "@/components/form-fields/text-area-form-field";
 import TextFormFields from "@/components/form-fields/text-form-field";
 import * as Yup from "yup";
 import { SingleAutocompleteSyncFormField } from "@/components/form-fields/autocomplete-form-fields";
-import { createSchema } from "@/libs/validation-schemas";
 import { ASSET_FIELD_VALUE_TYPE } from "@/constants/assets";
 
 export const DYNAMIC_FIELDS_COMPONENTS: any = {
@@ -196,42 +195,7 @@ export const validationSchema = Yup.object().shape({
   }),
 });
 
-export const signinValidationSchema = createSchema({
-  uniqueId: {
-    type: "string",
-    options: {
-      required: true,
-    },
-  },
-  name: {
-    type: "string",
-    options: {
-      ref: "uniqueId",
-      messages: {
-        ref: "both will be same",
-      },
-      // dependsOn: {
-      //   field: "uniqueId",
-      //   is: "123",
-      //   then: { required: true, max: 4 },
-      //   otherwise: { required: false, min: 7 },
-      // },
-    },
-  },
-  remember: {
-    type: "boolean",
-    options: {
-      required: true,
-    },
-  },
-  typeId: {
-    type: "mixed",
-    options: {
-      nullable: true,
-      required: true,
-    },
-  },
-});
+export const signinValidationSchema = validationSchema;
 
 export const signinFormDefaultValues = (fields?: any, beData?: any) => {
   const baseDefaults: any = {
@@ -249,7 +213,7 @@ export const signinFormDefaultValues = (fields?: any, beData?: any) => {
   return baseDefaults;
 };
 
-export const signinFormFieldDynamic = (onTypeChangeHandler: any) => [
+export const signinFormFieldDynamic = (onTypeChangeHandler?: any) => [
   {
     _id: 2,
     componentProps: {

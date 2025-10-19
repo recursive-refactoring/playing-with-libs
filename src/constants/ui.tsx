@@ -8,7 +8,7 @@ import {
   LinearProgressVariantsI,
   SkeletonTypesI,
   SkeletonVariantsI,
-} from "@/interfaces/constants/ui";
+} from "@/interfaces/ui";
 
 export const LINEAR_PROGRESS_VARIANTS: LinearProgressVariantsI = {
   DETERMINATE: "determinate",

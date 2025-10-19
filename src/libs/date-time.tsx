@@ -1,4 +1,7 @@
-import { DATE_TIME_FORMAT, TIME_INTERVALS } from "@/constants/date-time";
+import {
+  DATE_TIME_FORMAT,
+  TIME_INTERVALS_GENERAL,
+} from "@/constants/date-time";
 import dayjs from "dayjs";
 
 const {
@@ -7,7 +10,7 @@ const {
   MINUTES_IN_HOUR,
   MINUTES_IN_MONTH,
   MINUTES_IN_YEAR,
-} = TIME_INTERVALS ?? {};
+} = TIME_INTERVALS_GENERAL ?? {};
 
 export const nowDate = () => dayjs();
 

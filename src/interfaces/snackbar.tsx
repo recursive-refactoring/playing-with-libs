@@ -1,3 +1,10 @@
+export interface SnackbarVariantI {
+  SUCCESS: "success";
+  ERROR: "error";
+  WARNING: "warning";
+  INFO: "info";
+}
+
 export type SnackbarPositionType =
   | "top-right"
   | "top-center"
