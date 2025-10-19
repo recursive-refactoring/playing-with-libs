@@ -1,5 +1,6 @@
 import TextFormFields from "@/components/form-fields/text-form-field";
-import { applyValidators } from "@/libs/validation-schemas";
+import { validationSchema } from "@/libs/validation";
+// import { applyValidators } from "@/libs/validation-schemas";
 import { object, string } from "yup";
 
 export const authFormDefaultValues = (data?: any) => {
@@ -23,24 +24,40 @@ export const authFormDefaultValues = (data?: any) => {
 //   });
 // };
 
-export const authFormValidationSchema = () => {
-  return applyValidators("object", {
-    shape: {
-      email: applyValidators("string", {
-        options: { email: true, required: true },
-      }),
-      password: applyValidators("string", {
-        options: { max: 10 },
-        dependsOn: {
-          field: "email",
-          is: (value: any) => value === "hi",
-          then: { required: true },
-          otherwise: { min: 5 },
-        },
-      }),
-    },
+// export const authFormValidationSchema = () => {
+//   return applyValidators("object", {
+//     shape: {
+//       email: applyValidators("string", {
+//         options: { email: true, required: true },
+//       }),
+//       password: applyValidators("string", {
+//         options: { max: 10 },
+//         dependsOn: {
+//           field: "email",
+//           is: (value: any) => value === "hi",
+//           then: { required: true },
+//           otherwise: { min: 5 },
+//         },
+//       }),
+//     },
+//   });
+// };
+
+export const authFormValidationSchema = () =>
+  validationSchema.objectShape({
+    email: validationSchema.schema().label("nm").number().typeError().build(),
+    password: validationSchema
+      .schema()
+      .string()
+      .label("Password")
+      .max(10)
+      .when("email", {
+        is: (value: any) => value === "hi",
+        then: (schema) => schema.required(),
+        otherwise: (schema) => schema.min(5),
+      })
+      .build(),
   });
-};
 
 export const authFormFieldsDynamic = () => {
   return [
