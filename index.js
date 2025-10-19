@@ -97,12 +97,12 @@ const fillSimpleForm = async (
   page,
   fields = registerFieldsKeys(),
   specialFields = {
-    input: "input[name='companyLogo']",
+    fileInputs: ["input[name='companyLogo']"],
   },
 ) => {
   try {
     for (const key in fields) {
-      if (key.includes(specialFields?.input)) {
+      if (specialFields.fileInputs.includes(key)) {
         const input = await page.$(key);
         const filePath = path.resolve(fields?.[key]);
         input.uploadFile(filePath);

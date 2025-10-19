@@ -243,6 +243,7 @@ export const useValidator = (
   return useMemo(
     () =>
       applyValidators(type, validatorsOptions, validatorsMap, validationRules),
-    [type, JSON.stringify(validatorsOptions), ...deps], // Stringify for deep comparison
+    [type, JSON.stringify(validatorsOptions), ...deps],
+    // Stringify for deep comparison
   );
 };

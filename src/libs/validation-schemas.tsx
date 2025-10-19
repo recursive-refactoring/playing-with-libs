@@ -47,6 +47,7 @@ export const VALIDATORS_MAP: any = {
 
 export const applyValidators = (type: any, validatorsOptions: any = {}) => {
   const { options, dependsOn, messages, shape } = validatorsOptions || {};
+
   let validator = VALIDATORS_MAP?.[type];
   if (!validator) return;
 

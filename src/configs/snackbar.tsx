@@ -1,4 +1,4 @@
-import { SnackBarConfigI } from "@/interfaces/configs/snackbar";
+import { SnackBarConfigI } from "@/interfaces/snackbar";
 
 export const snackBarConfig: SnackBarConfigI = {
   position: "top-center",
