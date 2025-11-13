@@ -6,8 +6,6 @@ export const useMutationApi = (props: any) => {
     apiPaylaod,
     successMessage = "",
     errorMessage = undefined,
-    skip = false,
-    refetchOnMountAndArgChange = true,
   } = props;
 
   const [apiQueryTrigger, apiQueryResult] = apiQuery();
@@ -18,7 +16,7 @@ export const useMutationApi = (props: any) => {
       const response = await apiQueryTrigger(apiPaylaod)?.unwrap();
       successSnackbar(response?.data?.message || successMessage);
     } catch (error: any) {
-      if (errorMessage) {
+      if (hasReset) {
         errorSnackbar(error?.data?.message ?? (error?.message || errorMessage));
       }
     }
