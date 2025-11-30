@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { useCallback } from "react";
 import { getPreviewImageByType } from "@/utils/avatars";
-import { truncateText } from "@/utils/string-transformation";
+import { truncateText } from "@/utils/string-transformation.util";
 import { DynamicAvatar } from "../dynamic-avatar";
 import { Close } from "@mui/icons-material";
 

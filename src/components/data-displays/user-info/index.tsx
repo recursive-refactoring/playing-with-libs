@@ -1,5 +1,5 @@
 import { DynamicAvatar } from "@/components/avatars/dynamic-avatar";
-import { FlexLayout } from "@/components/layouts/flex-layout";
+import { FlexLayout } from "@/components/ui/grids/flex-layout";
 import { Box, Typography } from "@mui/material";
 
 export const UserInfo = (props: any) => {

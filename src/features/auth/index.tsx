@@ -2,8 +2,8 @@
 
 import { FormGrid } from "@/components/grids/form-grid";
 import { useAuth } from "./use-auth";
-import { CustomFormProvider } from "@/providers/custom-form-provider";
-import { CommonButton } from "@/components/buttons/common-button";
+import { CustomFormProvider } from "@/providers/custom-form.provider";
+import { CommonButton } from "@/components/ui/buttons/common-button";
 
 export const AuthFeature = () => {
   const { authFormFields, methods, onSubmit, handleSubmit, changingState } =

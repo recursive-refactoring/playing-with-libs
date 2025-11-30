@@ -1,10 +1,10 @@
-import { DATA_TYPES } from "@/constants/data-types";
-import { AVATAR_VARIANTS } from "@/constants/ui";
-import { generateImage } from "@/utils/avatars";
-import { pxToRem } from "@/utils/styles";
+import { DATA_TYPES } from "@/constants/data-types.constant";
+import { AVATAR_VARIANTS } from "@/constants/ui.constant";
+import { pxToRem } from "@/utils/styles.util";
 import { Avatar, Typography } from "@mui/material";
 import { DynamicAvatarPropsI } from "../avatars.interface";
 import { CommonTooltip } from "@/components/data-displays/common-tooltip";
+import { generateImage } from "@/utils";
 
 export const DynamicAvatar = (props: DynamicAvatarPropsI) => {
   const {

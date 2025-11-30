@@ -1,2 +1,1 @@
-export { default as ImportIcon } from "./import-icon";
-export { default as SquareCheckIcon } from "./square-check-icon";
+export * from "./edit.icon.jsx";

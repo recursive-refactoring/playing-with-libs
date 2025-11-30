@@ -1,5 +1,5 @@
-import { CIRCULAR_PROGRESS_VARIANTS } from "@/constants/ui";
-import { pxToRem } from "@/utils/styles";
+import { CIRCULAR_PROGRESS_VARIANTS } from "@/constants/ui.constant";
+import { pxToRem } from "@/utils/styles.util";
 import { CircularProgress } from "@mui/material";
 
 export const CommonCircularProgress = (props: any) => {

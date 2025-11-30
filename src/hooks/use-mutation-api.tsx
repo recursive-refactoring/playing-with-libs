@@ -1,4 +1,4 @@
-import { errorSnackbar, successSnackbar } from "@/libs/snackbar";
+import { errorSnackbar, successSnackbar } from "@/libs/snackbar.lib";
 import { useCallback } from "react";
 
 export const useMutationApi = (props: any) => {

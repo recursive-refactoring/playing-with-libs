@@ -1,6 +1,6 @@
-import { BodyText } from "@/components/text/body-text";
+import { BodyText } from "@/components/ui/text/body-text";
 import { CommonCard } from "../common-card";
-import { HeadingText } from "@/components/text/heading-text";
+import { HeadingText } from "@/components/ui/text/heading-text";
 import { ActivityInfoCardPropsI } from "../cards.interface";
 
 const ActivityInfoCard = (props: ActivityInfoCardPropsI) => {

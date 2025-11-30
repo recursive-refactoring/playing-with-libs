@@ -1,4 +1,4 @@
-import { API_MESSAGES } from "@/constants/messages";
+import { API_MESSAGES } from "@/constants/messages.constant";
 import { Box, Button, Typography } from "@mui/material";
 import { ApiErrorStatePropsI } from "../api-request-states.interface";
 import { StaticAvatar } from "@/components/avatars/static-avatar";

@@ -1,6 +1,6 @@
 import { ListGridPropsI } from "../Grids.interface";
-import { ContainerGridLayout } from "@/components/layouts/container-grid-layout";
-import { ItemGridLayout } from "@/components/layouts/item-grid-layout";
+import { ContainerGridLayout } from "@/components/ui/grids/container-grid";
+import { ItemGridLayout } from "@/components/ui/grids/item-grid-layout";
 
 export const ListGrid = (props: ListGridPropsI) => {
   const {

@@ -1,4 +1,4 @@
-import { FlexLayout } from "@/components/layouts/flex-layout";
+import { FlexLayout } from "@/components/ui/grids/flex-layout";
 import { NavLinks } from "../nav-links";
 import { adminMenuItemsData } from "../nav-links/nav-links.data";
 

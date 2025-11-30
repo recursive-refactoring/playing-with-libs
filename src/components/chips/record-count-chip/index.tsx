@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { RecordCountChipPropsI } from "../chips.interface";
 import { CommonChip } from "../common-chip";
-import { CHIP_SHAPE } from "@/constants/ui";
+import { CHIP_SHAPE } from "@/constants/ui.constant";
 import { SELECTED_ARRAY_LENGTH } from "@/constants/array";
 import { Variant } from "@mui/material/styles/createTypography";
 import { CommonCircularProgress } from "@/components/progress-bars/common-circular-progress";

@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import CommonDialog from "../common-dialog";
-import { ALERT_DIALOGS_TYPES } from "@/constants/alert-dialog";
+import CommonDialog from "../../common/common-dialog";
+import { ALERT_DIALOGS_TYPES } from "@/constants/alert";
 import { ALERT_DIALOGS_IMAGES } from "./alert-dialog.data";
-import { BodyText } from "@/components/text/body-text";
+import { BodyText } from "@/components/ui/text/body-text";
 import { StaticAvatar } from "@/components/avatars/static-avatar";
 
 export const AlertDialog = (props: any) => {

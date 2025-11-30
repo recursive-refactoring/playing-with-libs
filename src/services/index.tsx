@@ -1,5 +1,5 @@
 // RTK Query
-import { BE_BASE_URL, TOKEN } from "@/configs/env";
+import { BE_BASE_URL, TOKEN } from "@/configs/env.config";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({

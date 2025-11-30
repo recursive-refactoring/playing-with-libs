@@ -1,4 +1,4 @@
-import { pxToRem } from "@/utils/styles";
+import { pxToRem } from "@/utils/styles.util";
 import { alpha } from "@mui/material";
 
 export const styles = {

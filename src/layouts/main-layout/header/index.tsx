@@ -1,7 +1,7 @@
 import { LogoAvatar } from "@/components/avatars/logo-avatar";
 import { UserInfo } from "@/components/data-displays/user-info";
 import { SearchField } from "@/components/input-fields/search-field";
-import { FlexLayout } from "@/components/layouts/flex-layout";
+import { FlexLayout } from "@/components/ui/grids/flex-layout";
 import { Notifications } from "@mui/icons-material";
 import { Box } from "@mui/material";
 

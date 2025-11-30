@@ -1,6 +1,6 @@
-import { ContainerGridLayout } from "@/components/layouts/container-grid-layout";
+import { ContainerGridLayout } from "@/components/ui/grids/container-grid";
 import { HeadingFormGridPropsI } from "../Grids.interface";
-import { ItemGridLayout } from "@/components/layouts/item-grid-layout";
+import { ItemGridLayout } from "@/components/ui/grids/item-grid-layout";
 
 export const HeadingFormGrid = (props: HeadingFormGridPropsI) => {
   const {

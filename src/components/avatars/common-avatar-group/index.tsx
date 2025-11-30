@@ -2,7 +2,7 @@ import { AvatarGroup } from "@mui/material";
 import { CommonAvatarGroupPropsI } from "../avatars.interface";
 import { DynamicAvatar } from "../dynamic-avatar";
 import { fullNameInitial } from "@/utils/avatars";
-import { fullName } from "@/utils/string-transformation";
+import { fullName } from "@/utils/string-transformation.util";
 
 export const CommonAvatarGroup = (props: CommonAvatarGroupPropsI) => {
   const {

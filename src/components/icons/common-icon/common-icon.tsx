@@ -1,6 +1,6 @@
 "use client";
 
-import { FlexLayout } from "@/components/layouts/flex-layout";
+import { FlexLayout } from "@/components/ui/grids/flex-layout";
 
 export const CommonIcon = (props: any) => {
   const {

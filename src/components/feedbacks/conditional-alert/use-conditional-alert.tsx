@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { ConditionalAlertPropsI } from "../feedbacks.interface";
-import { ALERTS_TIMER } from "@/constants/snackbar";
 
 export const useConditionalAlert = (props: ConditionalAlertPropsI) => {
   const { condition, message } = props;
@@ -14,7 +13,7 @@ export const useConditionalAlert = (props: ConditionalAlertPropsI) => {
 
     const timer = setTimeout(() => {
       setAlert({ message: "", open: false });
-    }, ALERTS_TIMER?.CONDITIONAL_ALERT);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [message]);

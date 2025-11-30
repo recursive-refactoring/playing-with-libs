@@ -1,5 +1,5 @@
-import { FlexLayout } from "@/components/layouts/flex-layout";
-import { PAGINATION } from "@/configs/pagination";
+import { FlexLayout } from "@/components/ui/grids/flex-layout";
+import { PAGINATION } from "@/constants/pagination.constant";
 import { Pagination, TablePagination } from "@mui/material";
 import { useCallback } from "react";
 import { CommonPaginationPropsI } from "../navigation.interface";

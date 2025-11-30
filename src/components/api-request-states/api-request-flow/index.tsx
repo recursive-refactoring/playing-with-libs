@@ -1,5 +1,5 @@
-import BarSkeleton from "@/components/skeletons/bar-skeleton";
-import { SKELETON_TYPES } from "@/constants/ui";
+import BarSkeleton from "@/components/ui/skeletons/bar.skeleton";
+import { SKELETON_TYPES } from "@/constants/ui.constant";
 import ApiErrorState from "../api-error-state";
 import ApiNoDataState from "../api-no-data-state";
 import { ApiRequestFlowPropsI } from "../api-request-states.interface";

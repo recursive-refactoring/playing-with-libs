@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { LogoAvatarPropsI } from "../avatars.interface";
-import { PROJECT_NAME } from "@/configs/env";
-import { AVATAR_VARIANTS } from "@/constants/ui";
+import { PROJECT_NAME } from "@/configs/env.config";
+import { AVATAR_VARIANTS } from "@/constants/ui.constant";
 import {
   CommonDarkLogoImage,
   CommonWhiteLogoImage,

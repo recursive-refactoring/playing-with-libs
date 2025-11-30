@@ -11,11 +11,11 @@ import {
 import { useCommonTable } from "./use-common-table";
 import { CommonTablePropsI } from "../table.interface";
 import { flexRender } from "@tanstack/react-table";
-import { pxToRem } from "@/utils/styles";
+import { pxToRem } from "@/utils/styles.util";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import CommonPagination from "@/components/navigation/common-pagination";
-import { PAGINATION } from "@/configs/pagination";
+import { PAGINATION } from "@/constants/pagination.constant";
 
 const CommonTable = (props: CommonTablePropsI) => {
   const {

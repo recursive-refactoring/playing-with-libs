@@ -1,4 +1,4 @@
-import { getThemeColor } from "@/utils/theme";
+import { getThemeColor } from "@/utils/theme.util";
 import { useTheme } from "@mui/material";
 import { useQRCode } from "next-qrcode";
 

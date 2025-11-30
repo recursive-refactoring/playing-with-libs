@@ -1,4 +1,4 @@
-import { pxToRem } from "@/utils/styles";
+import { pxToRem } from "@/utils/styles.util";
 
 const FONT_FAMILY = "inherit";
 

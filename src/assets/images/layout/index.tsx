@@ -1,1 +1,1 @@
-export { default as CommonLayoutAvatarImage } from "./Avatar.png";
+export { default as AvatarImage } from "./avatar.image.png";

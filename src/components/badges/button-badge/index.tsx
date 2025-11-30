@@ -1,4 +1,4 @@
-import { CommonIconButton } from "@/components/buttons/common-icon-button";
+import { CommonIconButton } from "@/components/ui/buttons/common-icon-button";
 import { CommonIcon } from "@/components/icons/common-icon/common-icon";
 import { CameraAlt } from "@mui/icons-material";
 import { Badge } from "@mui/material";

@@ -1,7 +1,7 @@
 "use client";
-import { HeadingText } from "@/components/text/heading-text";
-import { ROLES } from "@/constants/roles";
-import { convertCurrentCaseToTitleCase } from "@/utils/string-transformation";
+import { HeadingText } from "@/components/ui/text/heading-text";
+import { ROLES } from "@/constants/roles.constant";
+import { convertCurrentCaseToTitleCase } from "@/utils/string-transformation.util";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 

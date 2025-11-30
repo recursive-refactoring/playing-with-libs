@@ -1,5 +1,5 @@
-import { LINEAR_PROGRESS_VARIANTS } from "@/constants/ui";
-import { pxToRem } from "@/utils/styles";
+import { LINEAR_PROGRESS_VARIANTS } from "@/constants/ui.constant";
+import { pxToRem } from "@/utils/styles.util";
 import { LinearProgress } from "@mui/material";
 
 export const CommonLinearProgress = (props: any) => {

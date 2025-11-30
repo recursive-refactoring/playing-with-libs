@@ -1,9 +1,9 @@
-import { AVATAR_VARIANTS } from "@/constants/ui";
+import { AVATAR_VARIANTS } from "@/constants/ui.constant";
 import { StaticAvatarPropsI } from "../avatars.interface";
 import Image from "next/image";
-import { pxToRem } from "@/utils/styles";
-import { STATIC_BLUR_DATA_URL } from "@/constants/avatars";
-import { AVATAR_VARIANTS_BORDER_RADIUS } from "@/constants/styles";
+import { pxToRem } from "@/utils/styles.util";
+import { STATIC_BLUR_DATA_URL } from "@/constants/avatars.constant";
+import { AVATAR_VARIANTS_BORDER_RADIUS } from "@/constants/styles.constant";
 
 export const StaticAvatar = (props: StaticAvatarPropsI) => {
   const {
