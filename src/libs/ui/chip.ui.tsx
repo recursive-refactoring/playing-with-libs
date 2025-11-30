@@ -1,5 +1,4 @@
-import { Chip } from "@mui/material";
-import { CommonChipPropsI } from "../chips.interface";
+import { Chip as ChipUi } from "@mui/material";
 import { CHIP_SHAPE, CHIP_VARIANTS } from "@/constants/ui.constant";
 
 const mapBorderRadius = {
@@ -8,7 +7,7 @@ const mapBorderRadius = {
   [CHIP_SHAPE?.SQUARE]: 1,
 };
 
-export const CommonChip = (props: CommonChipPropsI) => {
+export const Chip = (props: any) => {
   const {
     size = "small",
     label,
@@ -30,7 +29,7 @@ export const CommonChip = (props: CommonChipPropsI) => {
   } = props;
 
   return (
-    <Chip
+    <ChipUi
       size={size}
       label={label}
       variant={variant as any}

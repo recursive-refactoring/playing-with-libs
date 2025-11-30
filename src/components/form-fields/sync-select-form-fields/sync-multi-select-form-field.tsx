@@ -1,7 +1,7 @@
 import MultipleAutocompleteField from "@/components/input-fields/multiple-autocomplete-field";
 import { Controller, useFormContext } from "react-hook-form";
 
-const MultipleAutocompleteSyncFormField = (props: any) => {
+export const SyncMultiSelectFormField = (props: any) => {
   const {
     name,
     label,
@@ -55,5 +55,3 @@ const MultipleAutocompleteSyncFormField = (props: any) => {
     />
   );
 };
-
-export default MultipleAutocompleteSyncFormField;

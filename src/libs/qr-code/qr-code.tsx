@@ -1,8 +1,10 @@
-import { useCustomQRCode } from "./useCustomQRCode";
+import { useQRCode } from "./use-qr-code";
 
-export const CustomQRCode = (props: any) => {
+export const QRCode = (props: any) => {
   const { qrCodeValue, errorCorrectionLevel, margin, scale, width } = props;
-  const { Canvas, dark, light } = useCustomQRCode(props);
+
+  const { Canvas, dark, light } = useQRCode(props);
+
   return (
     <Canvas
       text={qrCodeValue}
@@ -19,5 +21,3 @@ export const CustomQRCode = (props: any) => {
     />
   );
 };
-
-export default CustomQRCode;

@@ -1,7 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
-import { useCommonTable } from "../../../hooks/use-table";
-import { CommonTablePropsI } from "../table.interface";
+import { CommonTablePropsI } from "../table/table.interface";
 import { flexRender } from "@tanstack/react-table";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -13,6 +12,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  useTable,
 } from "@/libs";
 import { PAGINATION } from "@/constants";
 import { pxToRem } from "@/utils";
@@ -32,10 +32,10 @@ const CommonTable = (props: CommonTablePropsI) => {
     hasPagination = true,
   } = props;
 
-  const { table } = useCommonTable(props);
+  const { table } = useTable(props);
 
   return (
-    <Box>
+    <>
       <TableContainer>
         <Table
           stickyHeader={stickyHeader}
@@ -145,7 +145,7 @@ const CommonTable = (props: CommonTablePropsI) => {
           />
         </Box>
       )}
-    </Box>
+    </>
   );
 };
 

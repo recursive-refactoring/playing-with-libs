@@ -1,8 +1,7 @@
 import SingleAutocompleteField from "@/components/input-fields/single-autocomplete-field";
-import { useCallback, useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-const SingleAutocompleteASyncFormField = (props: any) => {
+export const SyncSingleSelectFormField = (props: any) => {
   const {
     name,
     label,
@@ -15,13 +14,9 @@ const SingleAutocompleteASyncFormField = (props: any) => {
     onChangeHandler,
     isOptionEqualToValue = (option: any, newValue: any) =>
       option?._id === newValue?._id,
-    getOptionLabel = (option: any) => option?.name ?? option?.label,
+    getOptionLabel = (option: any) => option?.label ?? option?.name,
     groupBy = (option: any) => option?.groupBy,
     customOnChangeHandler = undefined,
-    apiQuery,
-    queryKey = "search",
-    externalParams = {},
-    debounceTime = 500,
   } = props;
 
   const { control } = useFormContext();
@@ -35,27 +30,6 @@ const SingleAutocompleteASyncFormField = (props: any) => {
     onChange(newValue);
   };
 
-  const [trigger, { data, isLoading, isFetching }]: any = apiQuery;
-  const [debounceTimeout, setDebounceTimeout] = useState<any>(null);
-  const [open, setOpen] = useState(false);
-
-  const triggerWithDebounce = useCallback(
-    (newInputValue: string) => {
-      if (debounceTimeout) clearTimeout(debounceTimeout);
-      const timeout = setTimeout(() => {
-        trigger({ params: { [queryKey]: newInputValue, ...externalParams } });
-      }, debounceTime);
-      setDebounceTimeout(timeout);
-    },
-    [debounceTimeout, queryKey, externalParams, debounceTime, trigger],
-  );
-
-  useEffect(() => {
-    return () => {
-      if (debounceTimeout) clearTimeout(debounceTimeout);
-    };
-  }, [debounceTimeout]);
-
   return (
     <Controller
       name={name}
@@ -68,25 +42,8 @@ const SingleAutocompleteASyncFormField = (props: any) => {
             onChange={(e: any, newValue: any) => {
               onChanged(e, newValue, field?.onChange);
             }}
-            open={open}
-            onOpen={() => {
-              setOpen(true);
-              return;
-              trigger({ params: { ...externalParams } });
-            }}
-            onClose={() => {
-              setOpen(false);
-            }}
             onBlur={field?.onBlur}
-            options={
-              data || [
-                {
-                  _id: 1,
-                  name: "d",
-                },
-                { _id: 2, name: "f" },
-              ]
-            }
+            options={options ?? []}
             noOptionsText={noOptionsText}
             groupBy={groupBy}
             freeSolo={freeSolo}
@@ -99,14 +56,9 @@ const SingleAutocompleteASyncFormField = (props: any) => {
             required={required}
             errorMessage={error?.message}
             endAdornment={endAdornment}
-            onInputChange={(event: any, newInputValue: any) => {
-              triggerWithDebounce(newInputValue);
-            }}
           />
         );
       }}
     />
   );
 };
-
-export default SingleAutocompleteASyncFormField;

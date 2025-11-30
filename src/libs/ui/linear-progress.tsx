@@ -1,8 +1,8 @@
 import { LINEAR_PROGRESS_VARIANTS } from "@/constants/ui.constant";
 import { pxToRem } from "@/utils/styles.util";
-import { LinearProgress } from "@mui/material";
+import { LinearProgress as LinearProgressUi } from "@mui/material";
 
-export const CommonLinearProgress = (props: any) => {
+export const LinearProgress = (props: any) => {
   const {
     variant = LINEAR_PROGRESS_VARIANTS?.IN_DETERMINATE,
     backgroundBarColor = "grey.0",
@@ -17,7 +17,7 @@ export const CommonLinearProgress = (props: any) => {
   } = props;
 
   return (
-    <LinearProgress
+    <LinearProgressUi
       aria-label={progressBarLabel}
       variant={variant}
       value={value}

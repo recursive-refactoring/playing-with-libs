@@ -1,8 +1,8 @@
 import { CIRCULAR_PROGRESS_VARIANTS } from "@/constants/ui.constant";
 import { pxToRem } from "@/utils/styles.util";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress as CircularProgressUi } from "@mui/material";
 
-export const CommonCircularProgress = (props: any) => {
+export const CircularProgress = (props: any) => {
   const {
     variant = CIRCULAR_PROGRESS_VARIANTS?.IN_DETERMINATE,
     thickness = 3.6,
@@ -12,16 +12,18 @@ export const CommonCircularProgress = (props: any) => {
     color = "primary",
     disableShrink = false,
     progressBarLabel = `circular-progress-bar-${variant}`,
+    customStyles,
   } = props;
 
   return (
-    <CircularProgress
+    <CircularProgressUi
       aria-label={progressBarLabel}
       disableShrink={disableShrink}
       variant={variant}
       color={color}
       sx={{
         color: progressBarColor,
+        ...customStyles,
       }}
       size={size}
       thickness={thickness}

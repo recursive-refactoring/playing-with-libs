@@ -1,7 +1,7 @@
-import SingleAutocompleteField from "@/components/input-fields/single-autocomplete-field";
+import MultipleAutocompleteField from "@/components/input-fields/multiple-autocomplete-field";
 import { Controller, useFormContext } from "react-hook-form";
 
-const SingleAutocompleteSyncFormField = (props: any) => {
+export const AsyncMultiSelectFormField = (props: any) => {
   const {
     name,
     label,
@@ -9,23 +9,17 @@ const SingleAutocompleteSyncFormField = (props: any) => {
     required,
     noOptionsText = "Nothing in the List",
     placeholder,
-    freeSolo = false,
-    endAdornment = false,
     onChangeHandler,
     isOptionEqualToValue = (option: any, newValue: any) =>
       option?._id === newValue?._id,
-    getOptionLabel = (option: any) => option?.label ?? option?.name,
+    getOptionLabel = (option: any) => option?.label,
     groupBy = (option: any) => option?.groupBy,
-    customOnChangeHandler = undefined,
+    limitTags = 3,
   } = props;
 
   const { control } = useFormContext();
 
   const onChanged = (e: any, newValue: any, onChange: any) => {
-    if (customOnChangeHandler) {
-      customOnChangeHandler?.(e, newValue, onChange);
-      return;
-    }
     onChangeHandler?.(e, newValue, onChange);
     onChange(newValue);
   };
@@ -36,9 +30,9 @@ const SingleAutocompleteSyncFormField = (props: any) => {
       control={control}
       render={({ field, fieldState: { error } }) => {
         return (
-          <SingleAutocompleteField
+          <MultipleAutocompleteField
             name={field?.name}
-            value={field?.value ?? null}
+            value={field?.value ?? []}
             onChange={(e: any, newValue: any) => {
               onChanged(e, newValue, field?.onChange);
             }}
@@ -46,7 +40,6 @@ const SingleAutocompleteSyncFormField = (props: any) => {
             options={options ?? []}
             noOptionsText={noOptionsText}
             groupBy={groupBy}
-            freeSolo={freeSolo}
             getOptionLabel={getOptionLabel}
             isOptionEqualToValue={isOptionEqualToValue}
             id={name}
@@ -55,12 +48,10 @@ const SingleAutocompleteSyncFormField = (props: any) => {
             placeholder={placeholder}
             required={required}
             errorMessage={error?.message}
-            endAdornment={endAdornment}
+            limitTags={limitTags}
           />
         );
       }}
     />
   );
 };
-
-export default SingleAutocompleteSyncFormField;

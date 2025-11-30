@@ -1,10 +1,7 @@
 "use client";
 
-import { UIHighlightOffOutlinedIcon } from "@/assets/ui-icons";
-import { CommonLoadingButton } from "@/components/ui/buttons/loading.button";
-import { CommonIcon } from "@/components/icons/common-icon/common-icon";
-import { FlexLayout } from "@/components/ui/grids/flex-layout";
-import { SubHeadingText } from "@/components/ui/text/sub-heading-text";
+import { EditIcon } from "@/assets";
+import { ActionIconButton, HorizontalStack } from "@/components/ui";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@/libs";
 
 export const CommonDialog = (props: any) => {
@@ -42,17 +39,17 @@ export const CommonDialog = (props: any) => {
       fullWidth
     >
       <DialogTitle component="div" customStyles={{ padding: 2 }}>
-        <FlexLayout justifyContent={"space-between"} mb={1.5}>
+        <HorizontalStack justifyContent={"space-between"} mb={1.5}>
           {!!extraTitle && extraTitle}
           {canClose && (
-            <CommonIcon
-              Icon={UIHighlightOffOutlinedIcon}
+            <ActionIconButton
+              Icon={EditIcon}
               hasAction
               color="text.secondary"
               onClick={closePortal}
             />
           )}
-        </FlexLayout>
+        </HorizontalStack>
       </DialogTitle>
       <DialogContent
         customStyles={{
