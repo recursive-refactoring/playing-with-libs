@@ -1,7 +1,7 @@
 import { API_MESSAGES } from "@/constants/messages.constant";
 import { Box, Button, Typography } from "@mui/material";
 import { ApiErrorStatePropsI } from "../api-request-states.interface";
-import { StaticAvatar } from "@/components/avatars/static-avatar";
+import { StaticAvatar } from "@/components/ui/avatars/static-avatar";
 
 const ApiErrorState = (props: ApiErrorStatePropsI) => {
   const {

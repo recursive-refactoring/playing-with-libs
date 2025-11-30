@@ -1,14 +1,21 @@
 import { Typography as TypographyUi } from "@mui/material";
 
-const Typography = (props: any) => {
+export const Typography = (props: any) => {
   const {
     children,
+    align = "inherit",
     customStyles,
     variant,
+    color,
+    fontWeight,
     gutterBottom,
-    noWrap,
-    component,
-    onClick,
+    noWrap = false,
+    letterSpacing = "normal",
+    lineHeight = "normal",
+    component = "p",
+    isCapital = false,
+    onClick = undefined,
+    textTransform = isCapital ? "capitalize" : "none",
   } = props;
 
   return (
@@ -16,7 +23,15 @@ const Typography = (props: any) => {
       gutterBottom={gutterBottom}
       variant={variant}
       component={component}
-      sx={customStyles}
+      sx={{
+        textAlign: align,
+        fontWeight,
+        color,
+        letterSpacing,
+        lineHeight,
+        textTransform,
+        ...customStyles,
+      }}
       noWrap={noWrap}
       onClick={onClick}
     >

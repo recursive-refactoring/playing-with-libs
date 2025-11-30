@@ -1,6 +1,6 @@
 import { UI_MESSAGES } from "@/constants/messages.constant";
 import { Box, Typography } from "@mui/material";
-import { StaticAvatar } from "@/components/avatars/static-avatar";
+import { StaticAvatar } from "@/components/ui/avatars/static-avatar";
 import { UiNoPageFoundStatePropsI } from "../ui-status-states.interface";
 
 const UiNoPageFoundState = (props: UiNoPageFoundStatePropsI) => {

@@ -1,6 +1,6 @@
 import { RecordCountChip } from "@/components/chips/record-count-chip";
 import { CommonCard } from "../common-card";
-import { StaticAvatar } from "@/components/avatars/static-avatar";
+import { StaticAvatar } from "@/components/ui/avatars/static-avatar";
 import { ItemAvatarCountCardPropsI } from "../cards.interface";
 
 const ItemAvatarCountCard = (props: ItemAvatarCountCardPropsI) => {

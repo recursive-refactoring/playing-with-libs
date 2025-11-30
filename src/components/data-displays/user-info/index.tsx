@@ -1,4 +1,4 @@
-import { DynamicAvatar } from "@/components/avatars/dynamic-avatar";
+import { DynamicAvatar } from "@/components/ui/avatars/dynamic-avatar";
 import { FlexLayout } from "@/components/ui/grids/flex-layout";
 import { Box, Typography } from "@mui/material";
 

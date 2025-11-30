@@ -1,7 +1,7 @@
 import { API_MESSAGES } from "@/constants/messages.constant";
 import { ApiNoDataStatePropsI } from "../api-request-states.interface";
 import { Box, Typography } from "@mui/material";
-import { StaticAvatar } from "@/components/avatars/static-avatar";
+import { StaticAvatar } from "@/components/ui/avatars/static-avatar";
 
 const ApiNoDataState = (props: ApiNoDataStatePropsI) => {
   const {

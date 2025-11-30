@@ -1,6 +1,6 @@
 import CommonDialog from "../../common/common-dialog";
 import { ALERT_DIALOGS_TYPES } from "@/constants/alert";
-import { StaticAvatar } from "@/components/avatars/static-avatar";
+import { StaticAvatar } from "@/components/ui/avatars/static-avatar";
 
 export const AlertDialog = (props: any) => {
   const {

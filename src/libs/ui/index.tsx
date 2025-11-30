@@ -25,4 +25,5 @@ export * from "./table-footer.ui";
 export * from "./table-head.ui";
 export * from "./table-row.ui";
 export * from "./table.ui";
+export * from "./tooltip.ui";
 export * from "./typography.ui";

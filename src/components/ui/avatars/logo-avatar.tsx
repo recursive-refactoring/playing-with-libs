@@ -1,13 +1,9 @@
-import { Avatar, Box, Typography } from "@mui/material";
-import { LogoAvatarPropsI } from "../avatars.interface";
 import { PROJECT_NAME } from "@/configs/env.config";
 import { AVATAR_VARIANTS } from "@/constants/ui.constant";
-import {
-  CommonDarkLogoImage,
-  CommonWhiteLogoImage,
-} from "@/assets/images/logo";
+import { DarkLogo, LightLogo } from "@/assets";
+import { Avatar } from "@/libs";
 
-export const LogoAvatar = (props: LogoAvatarPropsI) => {
+export const LogoAvatar = (props: any) => {
   const {
     productName,
     isWhite = true,
@@ -16,16 +12,17 @@ export const LogoAvatar = (props: LogoAvatarPropsI) => {
     variant = AVATAR_VARIANTS?.SQUARE,
   } = props;
 
-  const Logo = isWhite ? CommonWhiteLogoImage?.src : CommonDarkLogoImage?.src;
+  const Logo = isWhite ? LightLogo : DarkLogo;
 
   return (
-    <Box>
+    <>
       <Avatar
-        src={Logo}
         alt={PROJECT_NAME}
         sx={{ width, height, objectFit: "cover" }}
         variant={variant}
-      />
+      >
+        <Logo />
+      </Avatar>
       {!!productName && (
         <Typography
           component={"p"}
@@ -38,6 +35,6 @@ export const LogoAvatar = (props: LogoAvatarPropsI) => {
           {productName}
         </Typography>
       )}
-    </Box>
+    </>
   );
 };

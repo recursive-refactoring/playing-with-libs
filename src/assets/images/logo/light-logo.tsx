@@ -1,7 +1,7 @@
 "use client";
 import { SvgIcon } from "@/libs";
 
-export const WhiteLogo = (props: any) => {
+export const LightLogo = (props: any) => {
   const {
     width = "24px",
     height = "24px",

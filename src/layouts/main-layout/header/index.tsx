@@ -1,4 +1,4 @@
-import { LogoAvatar } from "@/components/avatars/logo-avatar";
+import { LogoAvatar } from "@/components/ui/avatars/logo-avatar";
 import { UserInfo } from "@/components/data-displays/user-info";
 import { SearchField } from "@/components/input-fields/search-field";
 import { FlexLayout } from "@/components/ui/grids/flex-layout";
