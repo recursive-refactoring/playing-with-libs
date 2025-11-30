@@ -1,7 +1,7 @@
 import { PROJECT_NAME } from "@/configs/env.config";
 import { AVATAR_VARIANTS } from "@/constants/ui.constant";
 import { DarkLogo, LightLogo } from "@/assets";
-import { Avatar } from "@/libs";
+import { Avatar, Typography } from "@/libs";
 
 export const LogoAvatar = (props: any) => {
   const {
