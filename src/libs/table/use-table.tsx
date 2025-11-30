@@ -6,9 +6,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { CommonTablePropsI } from "../table.interface";
 
-export const useCommonTable = (props: CommonTablePropsI) => {
+export const useTable = (props: any) => {
   const { columns, data } = props;
 
   const [sorting, setSorting] = useState<SortingState>([]);

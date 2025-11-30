@@ -1,4 +1,4 @@
-import { Stack } from "@/base";
+import { Stack } from "@/libs";
 
 export const VerticalStack = (props: any) => {
   const {

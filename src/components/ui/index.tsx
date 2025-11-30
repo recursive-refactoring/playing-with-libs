@@ -1,4 +1,4 @@
 export * from "./buttons";
-export * from "./skeletons";
+export * from "./grids";
 export * from "./skeletons";
 export * from "./stack";

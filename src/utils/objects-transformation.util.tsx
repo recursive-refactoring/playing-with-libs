@@ -1,4 +1,4 @@
-import { isoDateTimeString } from "@/libs";
+import { isoDateTimeString } from "@/lib";
 
 export const transformObjects = (object: any) => {
   const result: any = {};

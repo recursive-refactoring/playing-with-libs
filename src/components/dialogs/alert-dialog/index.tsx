@@ -1,8 +1,5 @@
-import { Box } from "@mui/material";
 import CommonDialog from "../../common/common-dialog";
 import { ALERT_DIALOGS_TYPES } from "@/constants/alert";
-import { ALERT_DIALOGS_IMAGES } from "./alert-dialog.data";
-import { BodyText } from "@/components/ui/text/body-text";
 import { StaticAvatar } from "@/components/avatars/static-avatar";
 
 export const AlertDialog = (props: any) => {
@@ -23,17 +20,10 @@ export const AlertDialog = (props: any) => {
       closePortal={closePortal}
       isCenterContent
     >
-      <Box>
-        <StaticAvatar
-          avatarSrc={ALERT_DIALOGS_IMAGES?.[type]}
-          isCenter
-          width={50}
-          height={50}
-        />
-        <Box sx={{ my: 2 }}>
-          <BodyText variant="body1">{message}</BodyText>
-        </Box>
-      </Box>
+      <>
+        <StaticAvatar avatarSrc={""} isCenter width={50} height={50} />
+        <BodyText variant="body1">{message}</BodyText>
+      </>
     </CommonDialog>
   );
 };

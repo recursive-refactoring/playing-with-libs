@@ -261,7 +261,7 @@ export function schemaBuilder() {
   return api;
 }
 
-export const validationSchema = {
+export const schema = {
   objectShape: (shape: Record<string, Yup.AnySchema>) =>
     Yup.object().shape(shape),
   schema: () => schemaBuilder(),

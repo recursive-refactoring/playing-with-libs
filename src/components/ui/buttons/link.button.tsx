@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/base";
+import { Button } from "@/libs";
 import Link from "next/link";
 import { LinkButtonPropsI } from "./buttons.interface";
 

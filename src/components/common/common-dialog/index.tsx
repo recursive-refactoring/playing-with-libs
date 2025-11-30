@@ -5,7 +5,7 @@ import { CommonLoadingButton } from "@/components/ui/buttons/loading.button";
 import { CommonIcon } from "@/components/icons/common-icon/common-icon";
 import { FlexLayout } from "@/components/ui/grids/flex-layout";
 import { SubHeadingText } from "@/components/ui/text/sub-heading-text";
-import { Dialog, DialogActions, DialogContent, DialogTitle } from "@/base";
+import { Dialog, DialogActions, DialogContent, DialogTitle } from "@/libs";
 
 export const CommonDialog = (props: any) => {
   const {

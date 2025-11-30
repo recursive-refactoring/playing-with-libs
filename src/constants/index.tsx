@@ -10,3 +10,4 @@ export * from "./routes.constant";
 export * from "./snackbar.constant";
 export * from "./styles.constant";
 export * from "./ui.constant";
+export * from "./pagination.constant";

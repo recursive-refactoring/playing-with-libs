@@ -26,8 +26,8 @@ export const otherDateTimeFormat = (
   format?: string,
 ) => dayjs(date)?.format(format);
 
-export const otherTimeFormat = (time: string | Dayjs, format?: string) =>
-  dayjs(time, format);
+export const stringToDate = (string: string | Dayjs, format?: string) =>
+  dayjs(string, format);
 
 export const formatTimeAgo = (date: string) => {
   return dayjs(date).fromNow();

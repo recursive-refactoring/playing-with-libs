@@ -1,5 +1,5 @@
 "use client";
-import { SvgIcon } from "@/base";
+import { SvgIcon } from "@/libs";
 
 export const DarkLogo = (props: any) => {
   const {

@@ -1,6 +1,6 @@
 "use client";
 import { CommonLoadingButtonPropsI } from "./buttons.interface";
-import { Button } from "@/base";
+import { Button } from "@/libs";
 
 export const LoadingButton = (props: CommonLoadingButtonPropsI) => {
   const {

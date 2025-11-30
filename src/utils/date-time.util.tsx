@@ -1,4 +1,4 @@
-import { nowDate } from "@/libs";
+import { nowDate } from "@/lib";
 
 const formatTimeUnit = (diff: number, unit: string, base: number = 1) => {
   const value = Math?.floor(diff / base);

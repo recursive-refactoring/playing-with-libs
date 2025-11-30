@@ -1,7 +1,7 @@
 "use client";
 
 import { EditIcon } from "@/assets";
-import { Button } from "@/base";
+import { Button } from "@/libs";
 
 export const FilterButton = (props: any) => {
   const {

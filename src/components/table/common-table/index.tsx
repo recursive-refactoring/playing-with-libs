@@ -1,31 +1,31 @@
 "use client";
+import { Box } from "@mui/material";
+import { useCommonTable } from "../../../hooks/use-table";
+import { CommonTablePropsI } from "../table.interface";
+import { flexRender } from "@tanstack/react-table";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CommonPagination from "@/components/navigation/common-pagination";
 import {
-  Box,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import { useCommonTable } from "./use-common-table";
-import { CommonTablePropsI } from "../table.interface";
-import { flexRender } from "@tanstack/react-table";
-import { pxToRem } from "@/utils/styles.util";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import CommonPagination from "@/components/navigation/common-pagination";
-import { PAGINATION } from "@/constants/pagination.constant";
+} from "@/libs";
+import { PAGINATION } from "@/constants";
+import { pxToRem } from "@/utils";
 
 const CommonTable = (props: CommonTablePropsI) => {
   const {
     ariaLabelTable = "main-table",
     minWidth = 1000,
     stickyHeader = false,
-    count = PAGINATION?.PAGE_COUNT,
+    count = PAGINATION?.TOTAL_PAGES,
     rowsPerPageOptions = PAGINATION?.ROWS_PER_PAGE_OPTIONS,
     pageLimit = PAGINATION?.PAGE_LIMIT,
-    currentPage = PAGINATION?.CURRENT_PAGE,
+    currentPage = PAGINATION?.DEFAULT_PAGE,
     totalRecords = PAGINATION?.TOTAL_RECORDS,
     setPage,
     setPageLimit,
@@ -39,13 +39,13 @@ const CommonTable = (props: CommonTablePropsI) => {
       <TableContainer>
         <Table
           stickyHeader={stickyHeader}
-          sx={{ minWidth: pxToRem(minWidth) }}
+          customStyles={{ minWidth: pxToRem(minWidth) }}
           aria-label={ariaLabelTable}
         >
           <TableHead>
             {table?.getHeaderGroups()?.map((headerGroup: any) => (
               <TableRow
-                sx={{
+                customStyles={{
                   backgroundColor: "primary.light",
                   textTransform: "capitalize",
                   borderRadius: 1,
@@ -54,7 +54,7 @@ const CommonTable = (props: CommonTablePropsI) => {
               >
                 {headerGroup?.headers.map((header: any) => (
                   <TableCell
-                    sx={{
+                    customStyles={{
                       textTransform: "capitalize",
                       fontWeight: "fontWeightBold",
                       borderBottom: "primary.light",

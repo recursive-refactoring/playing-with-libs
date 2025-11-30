@@ -1,5 +1,5 @@
 import { ItemGridPropsI } from "./grids.interface";
-import { Grid } from "@/base";
+import { Grid } from "@/libs";
 
 export const ItemGridLayout = (props: ItemGridPropsI) => {
   const {
