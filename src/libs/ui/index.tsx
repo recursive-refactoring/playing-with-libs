@@ -15,6 +15,8 @@ export * from "./divider.ui";
 export * from "./grid.ui";
 export * from "./icon-button.ui";
 export * from "./linear-progress";
+export * from "./menu-item.ui";
+export * from "./menu.ui";
 export * from "./skeleton.ui";
 export * from "./stack.ui";
 export * from "./svg.ui";
