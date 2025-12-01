@@ -20,9 +20,10 @@ export const SingleDropdownIconButton = (
     dropdownName = <MoreHoriz />,
     menuSxProps,
     buttonLabel = `action`,
+    onMenuClick = undefined,
   } = props;
 
-  const { anchorEl, open, theme, handleClick, handleClose } =
+  const { anchorEl, open, handleClick, handleClose } =
     useSingleDropdownIconButton();
 
   return (
@@ -55,7 +56,7 @@ export const SingleDropdownIconButton = (
               disabled={singleOption?.disabled}
               onClick={(event: any) => {
                 event?.stopPropagation();
-                singleOption?.handleClick?.(handleClose);
+                onMenuClick?.(handleClose);
               }}
               sx={{
                 cursor: "pointer",
@@ -67,7 +68,6 @@ export const SingleDropdownIconButton = (
             >
               <Typography
                 variant="body2"
-                color={theme?.palette?.grey?.[600]}
                 fontWeight={"fontWeightMedium"}
                 sx={singleOption?.titleSx}
               >

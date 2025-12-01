@@ -1,6 +1,9 @@
 "use client";
 
-export const ActionsLoadingButton = (props: ActionsLoadingButtonPropsI) => {
+import { LoadingButton } from "./loading.button";
+import { HorizontalStack } from "../stack";
+
+export const FormActionsButtons = (props: any) => {
   const {
     handleSubmitButton,
     handleCancelButton,
@@ -9,39 +12,30 @@ export const ActionsLoadingButton = (props: ActionsLoadingButtonPropsI) => {
     showSubmitLoader = false,
     disabledSubmitButton = showSubmitLoader,
     disabledCancelButton = showSubmitLoader,
-    hasBorder = true,
     justifyContent = "flex-end",
   } = props;
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent,
-        gap: 1,
-        py: 2,
-        mt: 2,
-        borderTop: hasBorder ? "1px solid" : "none",
-        borderColor: "custom.off_white_three",
-      }}
+    <HorizontalStack
+      alignItems="center"
+      justifyContent={justifyContent}
+      spacing={1}
     >
-      <CommonLoadingButton
+      <LoadingButton
         primary={false}
         onClick={handleCancelButton}
         disabled={disabledCancelButton}
       >
         {cancelButtonText}
-      </CommonLoadingButton>
-
-      <CommonLoadingButton
+      </LoadingButton>
+      <LoadingButton
         type="submit"
         loading={showSubmitLoader}
         disabled={disabledSubmitButton}
         onClick={handleSubmitButton}
       >
         {submitButtonText}
-      </CommonLoadingButton>
-    </Box>
+      </LoadingButton>
+    </HorizontalStack>
   );
 };
