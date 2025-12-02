@@ -1,8 +1,6 @@
 import { AvatarGroup } from "@mui/material";
-import { CommonAvatarGroupPropsI } from "../avatars.interface";
-import { DynamicAvatar } from "../dynamic-avatar";
-import { fullNameInitial } from "@/utils/avatars";
-import { fullName } from "@/utils/string-transformation.util";
+import { DynamicAvatar } from "./dynamic.avatar";
+import { getFullName, getInitials } from "@/utils";
 
 export const CommonAvatarGroup = (props: any) => {
   const {
@@ -33,8 +31,8 @@ export const CommonAvatarGroup = (props: any) => {
         <DynamicAvatar
           key={user?._id}
           avatarSrc={user?.avatar?.url ?? user?.avatar}
-          nameInitial={fullNameInitial(user?.firstName, user?.lastName)}
-          tooltipTitle={fullName(user?.firstName, user?.lastName)}
+          nameInitial={getInitials(user?.firstName, user?.lastName)}
+          tooltipTitle={getFullName(user?.firstName, user?.lastName)}
           width={width}
           height={height}
           variant={variant}

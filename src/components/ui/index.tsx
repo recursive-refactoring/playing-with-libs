@@ -1,3 +1,4 @@
+export * from "./avatars";
 export * from "./buttons";
 export * from "./grids";
 export * from "./skeletons";

@@ -3,7 +3,7 @@ import { ViewAvatarPropsI } from "../avatars.interface";
 import { ATTACHMENT_FILE_TYPE } from "@/constants/file.constant";
 import { generateImage } from "@/utils/avatars";
 import { AVATAR_VARIANTS } from "@/constants/ui.constant";
-import { CommonDialog } from "@/components/common/common-dialog";
+import { CommonDialog } from "@/components/common/dialog";
 
 const ViewAvatar = (props: ViewAvatarPropsI) => {
   const { isPortalOpen, setIsPortalOpen, avatarSrc, title, fileType } = props;

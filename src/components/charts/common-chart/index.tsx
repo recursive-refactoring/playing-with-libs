@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { ChartStyle } from ".";
 import { barOptionsDynamic } from "./common-chart.data";
 import { CommonChartPropsI } from "../charts.interface";
-import LazyLoadingFlow from "@/components/lazy-loading-flow";
+import LazyLoadingFlow from "@/components/lazy-loading-flow/lazy-loading.controller";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,

@@ -1,28 +1,24 @@
-import { errorSnackbar, successSnackbar } from "@/libs/snackbar/snackbar.lib";
-import { useCallback } from "react";
+import { useCallback } from 'react';
+import { errorSnackbar, successSnackbar } from '../libs';
 
 export const useMutationApi = (props: any) => {
-  const {
-    apiQuery,
-    apiPayload,
-    successMessage = "",
-    errorMessage = undefined,
-  } = props;
+  const { apiQuery, successMessage = '', errorMessage = undefined } = props;
 
   const [apiQueryTrigger, apiQueryResult] = apiQuery();
 
-  const hasReset = typeof apiQueryResult?.reset === "function";
-
-  const handleQuery = useCallback(async () => {
-    try {
-      const response = await apiQueryTrigger(apiPayload)?.unwrap();
-      successSnackbar(response?.data?.message || successMessage);
-    } catch (error: any) {
-      if (hasReset) {
+  const handleQuery = useCallback(
+    async (apiPayload: any) => {
+      try {
+        const response = await apiQueryTrigger(apiPayload)?.unwrap();
+        successSnackbar(response?.data?.message || successMessage);
+        return response;
+      } catch (error: any) {
         errorSnackbar(error?.data?.message ?? (error?.message || errorMessage));
+        throw error;
       }
-    }
-  }, [apiQueryTrigger, apiPayload, successMessage, errorMessage, hasReset]);
+    },
+    [apiQueryTrigger, successMessage, errorMessage],
+  );
 
   const { isLoading, isError, isSuccess, data } = apiQueryResult;
 
