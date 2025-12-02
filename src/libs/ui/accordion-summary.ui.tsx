@@ -8,6 +8,8 @@ export const AccordionSummary = (props: any) => {
     onMouseLeave,
     children,
     customStyles,
+    data,
+    aria,
   } = props;
 
   return (
@@ -18,6 +20,8 @@ export const AccordionSummary = (props: any) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       sx={customStyles}
+      {...aria}
+      {...data}
     >
       {children}
     </AccordionSummaryUi>

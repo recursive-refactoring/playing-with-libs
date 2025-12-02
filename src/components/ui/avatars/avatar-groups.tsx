@@ -4,7 +4,7 @@ import { DynamicAvatar } from "../dynamic-avatar";
 import { fullNameInitial } from "@/utils/avatars";
 import { fullName } from "@/utils/string-transformation.util";
 
-export const CommonAvatarGroup = (props: CommonAvatarGroupPropsI) => {
+export const CommonAvatarGroup = (props: any) => {
   const {
     width = 28,
     height = 28,

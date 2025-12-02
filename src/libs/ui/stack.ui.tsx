@@ -16,6 +16,8 @@ export const Stack = (props: any) => {
     justifyContent = "flex-start",
     flexGrow = 0,
     flexWrap = "nowrap",
+    data,
+    aria,
   } = props;
 
   return (
@@ -33,8 +35,8 @@ export const Stack = (props: any) => {
       divider={divider}
       useFlexGap={useFlexGap}
       onClick={onClick}
-      data-id={dataId}
-      data-index={dataIndex}
+      {...data}
+      {...aria}
     >
       {children}
     </StackUi>

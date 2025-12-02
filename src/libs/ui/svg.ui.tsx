@@ -10,6 +10,8 @@ export const SvgIcon = (props: any) => {
     hoverColor,
     cursor,
     onClick,
+    data,
+    aria,
   } = props;
 
   return (
@@ -23,6 +25,8 @@ export const SvgIcon = (props: any) => {
         ...customStyles,
       }}
       onClick={onClick}
+      {...data}
+      {...aria}
     >
       {children}
     </SvgIconUi>

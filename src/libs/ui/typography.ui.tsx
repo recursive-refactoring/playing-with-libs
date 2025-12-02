@@ -16,6 +16,8 @@ export const Typography = (props: any) => {
     isCapital = false,
     onClick = undefined,
     textTransform = isCapital ? "capitalize" : "none",
+    data,
+    aria,
   } = props;
 
   return (
@@ -34,6 +36,8 @@ export const Typography = (props: any) => {
       }}
       noWrap={noWrap}
       onClick={onClick}
+      {...data}
+      {...aria}
     >
       {children}
     </TypographyUi>

@@ -15,6 +15,8 @@ export const Button = (props: any) => {
     customStyles,
     type = "button",
     startIcon,
+    data,
+    aria,
   } = props;
 
   return (
@@ -31,6 +33,8 @@ export const Button = (props: any) => {
       fullWidth={fullWidth}
       sx={customStyles}
       type={type}
+      {...data}
+      {...aria}
     >
       {children}
     </ButtonUi>

@@ -26,6 +26,8 @@ export const Chip = (props: any) => {
     fontWeight = 400,
     hoverBackgroundColor = backgroundColor,
     borderColor,
+    data,
+    aria,
   } = props;
 
   return (
@@ -52,6 +54,8 @@ export const Chip = (props: any) => {
           },
         },
       }}
+      {...data}
+      {...aria}
     />
   );
 };

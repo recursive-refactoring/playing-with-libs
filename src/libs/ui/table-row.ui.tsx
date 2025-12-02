@@ -7,6 +7,8 @@ export const TableRow = (props: any) => {
     customStyles,
     hover = false,
     selected = false,
+    data,
+    aria,
   } = props;
 
   return (
@@ -15,6 +17,8 @@ export const TableRow = (props: any) => {
       hover={hover}
       selected={selected}
       component={component}
+      {...data}
+      {...aria}
     >
       {children}
     </TableRowUi>

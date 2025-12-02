@@ -1,6 +1,5 @@
 "use client";
 import { Box } from "@mui/material";
-import { CommonTablePropsI } from "../table/table.interface";
 import { flexRender } from "@tanstack/react-table";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -17,7 +16,7 @@ import {
 import { PAGINATION } from "@/constants";
 import { pxToRem } from "@/utils";
 
-const CommonTable = (props: CommonTablePropsI) => {
+const CommonTable = (props: any) => {
   const {
     ariaLabelTable = "main-table",
     minWidth = 1000,

@@ -8,6 +8,8 @@ export const TableCell = (props: any) => {
     size = "small",
     padding = "normal",
     align = "inherit",
+    data,
+    aria,
   } = props;
 
   return (
@@ -17,6 +19,8 @@ export const TableCell = (props: any) => {
       size={size}
       padding={padding}
       align={align}
+      {...data}
+      {...aria}
     >
       {children}
     </TableCellUi>

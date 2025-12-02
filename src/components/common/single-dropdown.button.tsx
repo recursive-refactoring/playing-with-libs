@@ -1,7 +1,7 @@
 "use client";
+import { useFlatDropdown } from "@/hooks";
 import { Menu, MenuItem, Typography } from "@/libs";
 import { Fragment } from "react";
-import { useSingleDropdownButton } from "../ui/buttons/single-dropdown-button/use-single-dropdown-button";
 
 export const DropdownButton = (props: any) => {
   const {
@@ -11,15 +11,14 @@ export const DropdownButton = (props: any) => {
     hasEndIcon = true,
     btnVariant = "outlined",
     menuSxProps,
-    buttonLabel = `action`,
     endIcon,
     color,
     menuId = "demo-positioned-menu",
     menuLabel = "demo-positioned-button",
-    handleClick,
   } = props;
 
-  const { anchorEl, open, handleClose } = useSingleDropdownButton();
+  const { anchorEl, open, handleClick, handleClose, handleMenuClick } =
+    useFlatDropdown(props);
 
   return (
     <>
@@ -28,11 +27,11 @@ export const DropdownButton = (props: any) => {
         onClick={handleClick}
         color={color}
         disabled={disabled}
-        aria-label={buttonLabel}
         endIcon={hasEndIcon && endIcon}
         dropdownName={dropdownName}
+        id={menuLabel}
+        label={menuId}
       >
-        {dropdownName}
         <Menu
           menuId={menuId}
           menuLabel={menuLabel}
@@ -45,7 +44,7 @@ export const DropdownButton = (props: any) => {
             <Fragment key={singleOption?.id}>
               <MenuItem
                 disabled={singleOption?.disabled}
-                onMenuItemClick={handleClick}
+                onMenuItemClick={handleMenuClick}
                 customStyles={{
                   cursor: "pointer",
                   "&.MuiMenuItem-root": {

@@ -11,6 +11,8 @@ export const Grid = (props: any) => {
     children,
     size,
     offset,
+    data,
+    aria,
   } = props;
 
   return (
@@ -22,6 +24,8 @@ export const Grid = (props: any) => {
       sx={customStyles}
       size={size}
       offset={offset}
+      {...data}
+      {...aria}
     >
       {children}
     </Grid2>

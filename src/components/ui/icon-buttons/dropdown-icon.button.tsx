@@ -1,16 +1,13 @@
-"use client";
 import { EditIcon } from "@/assets";
-import { SingleDropdownButtonPropsI } from "./buttons.interface";
-import { Button } from "@/libs";
+import { IconButton } from "@/libs";
 
-export const DropdownButton = (props: SingleDropdownButtonPropsI) => {
+export const DropdownIconButton = (props: any) => {
   const {
+    dropdownName = <EditIcon />,
+    buttonLabel = `action`,
     disabled,
-    dropdownName = "Actions",
-    hasEndIcon = true,
     btnVariant = "outlined",
     color = "secondary",
-    buttonLabel = `action`,
     children,
     isDropdownOpen,
     onBtnClick,
@@ -26,7 +23,7 @@ export const DropdownButton = (props: SingleDropdownButtonPropsI) => {
 
   return (
     <>
-      <Button
+      <IconButton
         variant={btnVariant}
         id={id}
         aria={aria}
@@ -35,10 +32,9 @@ export const DropdownButton = (props: SingleDropdownButtonPropsI) => {
         disabled={disabled}
         buttonLabel={buttonLabel}
         isCapital
-        endIcon={hasEndIcon && <EditIcon />}
       >
         {dropdownName}
-      </Button>
+      </IconButton>
       {children}
     </>
   );

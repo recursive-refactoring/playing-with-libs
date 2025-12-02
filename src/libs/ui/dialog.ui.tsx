@@ -9,6 +9,8 @@ export const Dialog = (props: any) => {
     fullWidth,
     children,
     customStyles,
+    data,
+    aria,
   } = props;
 
   return (
@@ -19,6 +21,8 @@ export const Dialog = (props: any) => {
       fullScreen={fullScreen}
       fullWidth={fullWidth}
       sx={customStyles}
+      {...data}
+      {...aria}
     >
       {children}
     </DialogUi>

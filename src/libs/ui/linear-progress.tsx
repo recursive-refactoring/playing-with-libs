@@ -14,6 +14,8 @@ export const LinearProgress = (props: any) => {
     height = pxToRem(5),
     customStyles,
     progressBarLabel = `linear-progress-bar-${variant}`,
+    data,
+    aria,
   } = props;
 
   return (
@@ -31,6 +33,8 @@ export const LinearProgress = (props: any) => {
         },
         ...customStyles,
       }}
+      {...data}
+      {...aria}
     />
   );
 };

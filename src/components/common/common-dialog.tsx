@@ -1,14 +1,23 @@
 "use client";
 
 import { EditIcon } from "@/assets";
-import { ActionIconButton, HorizontalStack } from "@/components/ui";
-import { Dialog, DialogActions, DialogContent, DialogTitle } from "@/libs";
+import {
+  ActionIconButton,
+  FormActionsButtons,
+  HorizontalStack,
+} from "@/components/ui";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@/libs";
 
 export const CommonDialog = (props: any) => {
   const {
     isPortalOpen = false,
     closePortal,
-    dialogTitle = "",
     children,
     disabledCancelButton = false,
     showSubmitLoader = false,
@@ -20,15 +29,10 @@ export const CommonDialog = (props: any) => {
     dialogMaxWidth = "sm",
     disabledSubmitButton = showSubmitLoader,
     showCancelButton = true,
-    submitButtonStyles,
-    cancelButtonStyles,
-    isCapital = true,
     canClose = true,
-    extraTitle,
-    titlePosition = "flex-start",
-    submitBtnFull = false,
-    cancelBtnFull = false,
+    title,
     isCenterContent = false,
+    showSubmitButton = true,
   } = props;
 
   return (
@@ -40,7 +44,7 @@ export const CommonDialog = (props: any) => {
     >
       <DialogTitle component="div" customStyles={{ padding: 2 }}>
         <HorizontalStack justifyContent={"space-between"} mb={1.5}>
-          {!!extraTitle && extraTitle}
+          <Typography variant="h4">{title}</Typography>
           {canClose && (
             <ActionIconButton
               Icon={EditIcon}
@@ -67,7 +71,20 @@ export const CommonDialog = (props: any) => {
             paddingBottom: 2,
             justifyContent: isCenterContent ? "center" : "flex-end",
           }}
-        ></DialogActions>
+        >
+          <FormActionsButtons
+            handleSubmitButton={handleSubmitButton}
+            handleCancelButton={handleCancelButton}
+            cancelButtonText={cancelButtonText}
+            submitButtonText={submitButtonText}
+            showSubmitLoader={showSubmitLoader}
+            disabledSubmitButton={disabledSubmitButton}
+            disabledCancelButton={disabledCancelButton}
+            justifyContent="flex-end"
+            showCancelButton={showCancelButton}
+            showSubmitButton={showSubmitButton}
+          />
+        </DialogActions>
       )}
     </Dialog>
   );

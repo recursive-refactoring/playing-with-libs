@@ -1,6 +1,6 @@
 import { Tooltip as TooltipUi } from "@mui/material";
 
-export const CTooltip = (props: any) => {
+export const Tooltip = (props: any) => {
   const {
     title = "",
     children,
@@ -8,7 +8,8 @@ export const CTooltip = (props: any) => {
     isCapital,
     tooltipBgColor = "primary.main",
     tooltipTextColor = "common.white",
-    ...others
+    data,
+    aria,
   } = props;
 
   return (
@@ -33,7 +34,8 @@ export const CTooltip = (props: any) => {
           },
         },
       }}
-      {...others}
+      {...data}
+      {...aria}
     >
       {children}
     </TooltipUi>

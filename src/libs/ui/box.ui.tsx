@@ -7,7 +7,8 @@ export const Box = (props: any) => {
     component = "div",
     onClick = undefined,
     ref = undefined,
-    data = undefined,
+    data,
+    aria,
   } = props;
 
   return (
@@ -16,7 +17,8 @@ export const Box = (props: any) => {
       sx={customStyles}
       onClick={onClick}
       ref={ref}
-      data-data={data}
+      {...data}
+      {...aria}
     >
       {children}
     </BoxUi>

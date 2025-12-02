@@ -13,6 +13,8 @@ export const CircularProgress = (props: any) => {
     disableShrink = false,
     progressBarLabel = `circular-progress-bar-${variant}`,
     customStyles,
+    data,
+    aria,
   } = props;
 
   return (
@@ -28,6 +30,8 @@ export const CircularProgress = (props: any) => {
       size={size}
       thickness={thickness}
       value={value}
+      {...data}
+      {...aria}
     />
   );
 };

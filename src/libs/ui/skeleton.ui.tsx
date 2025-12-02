@@ -9,6 +9,8 @@ export const Skeleton = (props: any) => {
     customStyles,
     children,
     component,
+    data,
+    aria,
   } = props;
 
   return (
@@ -19,6 +21,8 @@ export const Skeleton = (props: any) => {
       height={height}
       component={component}
       sx={customStyles}
+      {...data}
+      {...aria}
     >
       {children}
     </SkeletonUi>

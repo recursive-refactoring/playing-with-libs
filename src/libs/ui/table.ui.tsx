@@ -8,6 +8,8 @@ export const Table = (props: any) => {
     stickyHeader = false,
     size = "small",
     padding = "normal",
+    data,
+    aria,
   } = props;
 
   return (
@@ -17,6 +19,8 @@ export const Table = (props: any) => {
       component={component}
       size={size}
       padding={padding}
+      {...data}
+      {...aria}
     >
       {children}
     </TableUi>

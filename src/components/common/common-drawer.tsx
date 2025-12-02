@@ -1,16 +1,18 @@
-import { UIHighlightOffOutlinedIcon } from "@/assets/ui-icons";
-import { CommonLoadingButton } from "@/components/ui/buttons/loading.button";
-import { CommonIcon } from "@/components/icons/common-icon/common-icon";
-import { FlexLayout } from "@/components/ui/grids/flex-layout";
-import { SubHeadingText } from "@/components/ui/text/sub-heading-text";
-import { pxToRem } from "@/utils/styles.util";
 import {
-  Box,
+  ActionIconButton,
+  FormActionsButtons,
+  HorizontalStack,
+  VerticalStack,
+} from "../ui";
+import {
   DialogActions,
   DialogContent,
   DialogTitle,
   Drawer,
-} from "@mui/material";
+  Typography,
+} from "@/libs";
+import { EditIcon } from "@/assets";
+import { pxToRem } from "@/utils";
 
 export const CommonDrawer = (props: any) => {
   const {
@@ -18,8 +20,6 @@ export const CommonDrawer = (props: any) => {
     closePortal,
     anchor = "right",
     variant = "temporary",
-    drawerTitle = "",
-    drawerTitleColor = "primary.main",
     disabledCancelButton = false,
     showSubmitLoader = false,
     handleSubmitButton,
@@ -29,95 +29,73 @@ export const CommonDrawer = (props: any) => {
     showActionButtons = true,
     disabledSubmitButton = showSubmitLoader,
     showCancelButton = true,
-    submitButtonStyles,
-    cancelButtonStyles,
-    isCapital = true,
     canClose = true,
-    titlePosition = "flex-start",
-    submitBtnFull = false,
-    cancelBtnFull = false,
     showSubmitButton = true,
     children,
+    title,
+    isCenterContent,
   } = props;
 
   return (
     <Drawer
-      open={isPortalOpen}
-      onClose={closePortal}
+      isDrawerOpen={isPortalOpen}
+      onDrawerClose={closePortal}
       anchor={anchor}
       variant={variant}
     >
-      <Box
-        sx={{
+      <VerticalStack
+        customStyles={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "100%",
           width: { sm: pxToRem(500), xs: "100vw" },
         }}
       >
-        <DialogTitle component="div" sx={{ padding: 2 }}>
-          <FlexLayout justifyContent={"space-between"} mb={1.5}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                flex: 1,
-                gap: 1,
-                flexWrap: "wrap",
-                justifyContent: titlePosition,
-              }}
-            >
-              <SubHeadingText
-                isCapital={isCapital}
-                variant="subtitle1"
-                color={drawerTitleColor}
-              >
-                {drawerTitle}
-              </SubHeadingText>
-            </Box>
+        <DialogTitle component="div" customStyles={{ padding: 2 }}>
+          <HorizontalStack justifyContent={"space-between"} mb={1.5}>
+            <Typography variant="h4">{title}</Typography>
             {canClose && (
-              <CommonIcon
-                Icon={UIHighlightOffOutlinedIcon}
+              <ActionIconButton
+                Icon={EditIcon}
                 hasAction
                 color="text.secondary"
                 onClick={closePortal}
               />
             )}
-          </FlexLayout>
+          </HorizontalStack>
         </DialogTitle>
 
-        <DialogContent sx={{ padding: 2 }}>{children}</DialogContent>
+        <DialogContent
+          customStyles={{
+            padding: 2,
+            textAlign: isCenterContent ? "center" : "left",
+          }}
+        >
+          {children}
+        </DialogContent>
         {showActionButtons && (
-          <DialogActions sx={{ padding: 2 }}>
-            {showCancelButton && (
-              <CommonLoadingButton
-                className="small"
-                type="button"
-                primary={false}
-                fullWidth={cancelBtnFull}
-                onClick={handleCancelButton}
-                disabled={disabledCancelButton}
-                customStyles={cancelButtonStyles}
-              >
-                {cancelButtonText}
-              </CommonLoadingButton>
-            )}
-            {showSubmitButton && (
-              <CommonLoadingButton
-                className="small"
-                type="submit"
-                fullWidth={submitBtnFull}
-                onClick={handleSubmitButton}
-                loading={showSubmitLoader}
-                disabled={disabledSubmitButton}
-                customStyles={submitButtonStyles}
-              >
-                {submitButtonText}
-              </CommonLoadingButton>
-            )}
+          <DialogActions
+            customStyles={{
+              paddingTop: `0 !important`,
+              paddingX: 2,
+              paddingBottom: 2,
+              justifyContent: isCenterContent ? "center" : "flex-end",
+            }}
+          >
+            <FormActionsButtons
+              handleSubmitButton={handleSubmitButton}
+              handleCancelButton={handleCancelButton}
+              cancelButtonText={cancelButtonText}
+              submitButtonText={submitButtonText}
+              showSubmitLoader={showSubmitLoader}
+              disabledSubmitButton={disabledSubmitButton}
+              disabledCancelButton={disabledCancelButton}
+              justifyContent="flex-end"
+              showCancelButton={showCancelButton}
+              showSubmitButton={showSubmitButton}
+            />
           </DialogActions>
         )}
-      </Box>
+      </VerticalStack>
     </Drawer>
   );
 };

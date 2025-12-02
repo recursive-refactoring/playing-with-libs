@@ -9,6 +9,8 @@ export const Menu = (props: any) => {
     onMenuClose,
     customStyles,
     children,
+    data,
+    aria,
   } = props;
 
   return (
@@ -19,6 +21,8 @@ export const Menu = (props: any) => {
       open={isMenuOpen}
       onClose={onMenuClose}
       sx={customStyles}
+      {...data}
+      {...aria}
     >
       {children}
     </MenuUi>

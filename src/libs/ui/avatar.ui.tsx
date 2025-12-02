@@ -1,5 +1,6 @@
 import { generateImage } from "@/utils";
 import { Avatar as AvatarUi } from "@mui/material";
+import { useMemo } from "react";
 
 export const Avatar = (props: any) => {
   const {
@@ -16,27 +17,51 @@ export const Avatar = (props: any) => {
     isStatic = false,
     onClick = undefined,
     children,
+    data,
+    aria,
+    id,
   } = props;
 
-  const avatarImage = isStatic ? avatarSrc?.src : generateImage(avatarSrc);
+  const sx = useMemo(
+    () => ({
+      backgroundColor:
+        backgroundColor ?? (avatarSrc ? "transparent" : "primary.main"),
+      width: "100%",
+      maxWidth: width,
+      height,
+      minWidth: { xs: "auto", sm: width },
+      padding,
+      margin: isCenter ? "auto" : undefined,
+      boxShadow,
+      ...customStyles,
+    }),
+    [
+      backgroundColor,
+      avatarSrc,
+      width,
+      height,
+      padding,
+      isCenter,
+      boxShadow,
+      customStyles,
+    ],
+  );
+
+  const avatarImage = useMemo(
+    () => (isStatic ? avatarSrc?.src : generateImage(avatarSrc)),
+    [avatarSrc, isStatic],
+  );
 
   return (
     <AvatarUi
-      sx={{
-        backgroundColor,
-        width: "100%",
-        maxWidth: width,
-        height: height,
-        minWidth: { xs: "auto", sm: width },
-        padding,
-        margin: isCenter ? "auto" : "",
-        boxShadow,
-        ...customStyles,
-      }}
+      id={id}
+      sx={sx}
       variant={variant}
       src={avatarImage}
       alt={nameInitial}
       onClick={onClick}
+      {...data}
+      {...aria}
     >
       {children}
     </AvatarUi>

@@ -11,7 +11,9 @@ export const IconButton = (props: any) => {
     size = "small",
     customStyles,
     color,
-    iconName,
+    ariaLabel,
+    data,
+    aria,
   } = props;
 
   return (
@@ -24,7 +26,9 @@ export const IconButton = (props: any) => {
       onClick={onClick}
       type={type}
       size={size}
-      aria-label={iconName}
+      aria-label={ariaLabel}
+      {...data}
+      {...aria}
     >
       {children}
     </IconButtonUi>

@@ -10,7 +10,8 @@ export const Accordion = (props: any) => {
     customStyles,
     children,
     onChange,
-    dataProps,
+    data,
+    aria,
   } = props;
 
   return (
@@ -22,7 +23,8 @@ export const Accordion = (props: any) => {
       expanded={expanded}
       onChange={onChange}
       sx={customStyles}
-      {...dataProps}
+      {...data}
+      {...aria}
     >
       {children}
     </AccordionUI>

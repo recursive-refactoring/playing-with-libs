@@ -13,6 +13,8 @@ export const FormActionsButtons = (props: any) => {
     disabledSubmitButton = showSubmitLoader,
     disabledCancelButton = showSubmitLoader,
     justifyContent = "flex-end",
+    showCancelButton = true,
+    showSubmitButton = true,
   } = props;
 
   return (
@@ -21,21 +23,25 @@ export const FormActionsButtons = (props: any) => {
       justifyContent={justifyContent}
       spacing={1}
     >
-      <LoadingButton
-        primary={false}
-        onClick={handleCancelButton}
-        disabled={disabledCancelButton}
-      >
-        {cancelButtonText}
-      </LoadingButton>
-      <LoadingButton
-        type="submit"
-        loading={showSubmitLoader}
-        disabled={disabledSubmitButton}
-        onClick={handleSubmitButton}
-      >
-        {submitButtonText}
-      </LoadingButton>
+      {showCancelButton && (
+        <LoadingButton
+          primary={false}
+          onClick={handleCancelButton}
+          disabled={disabledCancelButton}
+        >
+          {cancelButtonText}
+        </LoadingButton>
+      )}
+      {showSubmitButton && (
+        <LoadingButton
+          type="submit"
+          loading={showSubmitLoader}
+          disabled={disabledSubmitButton}
+          onClick={handleSubmitButton}
+        >
+          {submitButtonText}
+        </LoadingButton>
+      )}
     </HorizontalStack>
   );
 };

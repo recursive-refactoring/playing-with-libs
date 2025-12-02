@@ -1,7 +1,7 @@
 import { Divider as DividerUi } from "@mui/material";
 
 export const Divider = (props: any) => {
-  const { orientation, flexItem, variant, customStyles } = props;
+  const { orientation, flexItem, variant, customStyles, data, aria } = props;
 
   return (
     <DividerUi
@@ -9,6 +9,8 @@ export const Divider = (props: any) => {
       flexItem={flexItem}
       variant={variant}
       sx={customStyles}
+      {...data}
+      {...aria}
     />
   );
 };
