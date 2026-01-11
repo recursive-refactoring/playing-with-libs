@@ -7,6 +7,7 @@ import {
 } from "./auth.data";
 import { useState } from "react";
 import { useReferenceTracker } from "@/hooks/use-reference-tracker";
+import { usePatchTabMutation, usePostTabMutation } from "@/services/some";
 
 export const useAuth = () => {
   const [changeState, setChangeState] = useState(0);
@@ -39,6 +40,21 @@ export const useAuth = () => {
   //   changingState,
   //   authFormFields,
   // ]);
+  const [trigger] = usePostTabMutation();
+
+  const [trigger2] = usePatchTabMutation();
+
+  const post = async () => {
+    try {
+      await trigger({ id: 1 })?.unwrap();
+    } catch (error) {}
+  };
+
+  const post2 = async () => {
+    try {
+      await trigger2({ body: { id: 33 }, id: "pp" })?.unwrap();
+    } catch (error) {}
+  };
 
   return {
     authFormFields,
@@ -46,5 +62,7 @@ export const useAuth = () => {
     onSubmit,
     handleSubmit,
     changingState,
+    post,
+    post2,
   };
 };

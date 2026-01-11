@@ -6,11 +6,14 @@ import { CustomFormProvider } from "@/providers/custom-form-provider";
 import { CommonButton } from "@/components/buttons/common-button";
 
 export const AuthFeature = () => {
-  const { authFormFields, methods, onSubmit, handleSubmit, changingState } =
+  const { authFormFields, methods,post, post2, onSubmit, handleSubmit, changingState } =
     useAuth();
   return (
     <>
-      <CustomFormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      <CommonButton type="submit" primary onClick={post}>
+          Submit
+        </CommonButton>
+      {/* <CustomFormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <FormGrid formFieldsList={authFormFields} />
         <br />
         <CommonButton type="submit" primary>
@@ -20,7 +23,7 @@ export const AuthFeature = () => {
       <br />
       <CommonButton primary onClick={changingState}>
         Change
-      </CommonButton>
+      </CommonButton> */}
     </>
   );
 };

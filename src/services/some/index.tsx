@@ -1,3 +1,4 @@
+import { buildMutationRequest } from "@/libs/api";
 import { baseAPI } from "@/services";
 
 export const someAPI = baseAPI.injectEndpoints({
@@ -9,20 +10,27 @@ export const someAPI = baseAPI.injectEndpoints({
       }),
     }),
 
-    postTab: builder.mutation({
-      query: (body: any) => ({
-        url: "/list",
-        method: "POST",
-        body,
-      }),
+    // postTab: builder.mutation({
+    //   query: (body: any) => ({
+    //     url: "/list",
+    //     method: "POST",
+    //     body,
+    //   }),
+    // }),
+    postTab: buildMutationRequest({
+      builder,
+      url: () => "/list",
     }),
-
-    patchTab: builder.mutation({
-      query: ({ body, id }: any) => ({
-        url: `/list/${id}`,
-        method: "PUT",
-        body,
-      }),
+    // patchTab: builder.mutation({
+    //   query: ({ body, id }: any) => ({
+    //     url: `/list/${id}`,
+    //     method: "PUT",
+    //     body,
+    //   }),
+    // }),
+    patchTab: buildMutationRequest({
+      builder,
+      url: (apiParamter: any) => `/list/${apiParamter?.id}`,
     }),
     getTypesById: builder.query({
       query: (listTypeId: string) => ({
